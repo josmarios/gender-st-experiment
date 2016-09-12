@@ -9,15 +9,14 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 
-<body ng-app="tutor" ng-controller="IndexCtrl">
+<body ng-app="tutor" ng-controller="TutorCtrl">
     <md-toolbar>
-        <h1 layout="row" layout-align="center center">{{userid}} </h1>
+        <h2 layout="row" layout-align="center center" flex="25">Tutor</h2>
+        <md-button ng-click="#" flex="20">Home</md-button>
     </md-toolbar>
-    <div layout="row" layout-align="end end">
-        <h1>
-       Tutor
-       </h1>
-    </div>
+
+      <div ng-view></div>
+      
     <script src="libs/node_modules/angular/angular.js"></script>
     <script src="libs/node_modules/angular-route.min.js"></script>
     <script src="libs/node_modules/angular-resource.min.js"></script>
