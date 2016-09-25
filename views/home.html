@@ -2,61 +2,60 @@
     <div layout="row">
         <!--Content -->
         <md-card layout="column" flex="50" flex-offset="10">
-            <h3>Activities</h3>
-           <md-card layout="column" layout-align="center center" flex-offset="10" ng-click="showProblems()">
-                <md-card-title>
-                    <md-card-title-text>
-                        Problem #1
-                    </md-card-title-text>
-                </md-card-title>
+            <div layout="row" layout-align="center center">
+                <h2> Tarefas</h2>
+            </div>
+            <md-card layout="column" layout-align="center center">
+                <h4> Atividade 1</h4>
                 <div>
-                    stars...
+                    <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">star</i>
                 </div>
+                <md-button class="md-raised" ng-click="showProblems()">
+                    Iniciar
+                </md-button>
             </md-card>
 
-            <md-card layout="column" layout-align="center center" flex-offset="10" ng-click="">
-                <md-card-title>
-                    Problem #2
-                </md-card-title>
+            <md-card layout="column" layout-align="center center">
+                <h4> Atividade 2</h4>
                 <div>
-                    stars...
+                    <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">star</i>
                 </div>
+                <md-button class="md-raised" ng-click="showProblems()">
+                    Iniciar
+                </md-button>
             </md-card>
+
+            
         </md-card>
         <!-- Right Panel -->
         <div layout="column" flex="20" flex-offset="10">
-            <md-card layout="column">
-                <i class="material-icons">person</i>
-                <label>User's Name</label>
-                <label>Points: 500</label>
+            <md-card layout="column" layout-align="center center">
+                <i class="material-icons" style="font-size:96px">person</i>
+                <!-- <img src="../assets/images/man-user.png"> -->
+                <md-card-content>
+                    <p>Meu Nome</p>
+                    <h4>Pontos: 500</h4>
+                </md-card-content>
             </md-card>
             <md-card layout="column">
                 <md-card-title>
-                    <md-card-title-text>
-                        Ranking
-                    </md-card-title-text>
+                    <h3>Ranking</h3>
                 </md-card-title>
                 <md-card-content>
                     <md-list>
-                        <md-subheader layout="row" class="md-no-sticky">
-                            <span flex="20"></span>
-                            <label>Name</label>
-                            <label>#</label>
-                        </md-subheader>
-                        <md-list-item  ng-click="">
-                            <div class="md-list-item-text" layout="row">
-                                <i class="material-icons" flex="20">person</i>
-                                <h4 flex="60">username</h4>
-                                <p flex="10">Position</p>
-                            </div>
+                        <md-list-item ng-repeat="a in ['Alex','Beto','Camila','Daniel','Eva']">
+                            <label>{{$index+1}} - {{a}}</label>
+                        </md-list-item>
+                        <md-list-item>
+                            <label><b>6 - Eu</b></label>
                         </md-list-item>
                     </md-list>
                 </md-card-content>
             </md-card>
         </div>
+
     </div>
-    <div layout="row" layout-align="end end">
-        <md-button ng-click="showPosttest()">Continuar</md-button>
-        
+    <div layout="row" layout-align="center center">
+        <md-button ng-click="showPosttest()" class="md-raised md-primary">Feito.<br> Vamos para a última etapa!</md-button>
     </div>
 </div>

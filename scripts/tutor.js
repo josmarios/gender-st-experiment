@@ -1,4 +1,4 @@
-angular.module('tutor', ['ngRoute', 'ngResource', 'ngAnimate', 'ngMaterial']).config(function($routeProvider) {
+angular.module('tutor', ['ngRoute', 'ngResource', 'ngAnimate', 'ngMaterial']).config(function($routeProvider, $mdThemingProvider) {
 
     $routeProvider.
     when('/home', {
@@ -16,4 +16,24 @@ angular.module('tutor', ['ngRoute', 'ngResource', 'ngAnimate', 'ngMaterial']).co
     otherwise({
         redirectTo: '/home'
     });
+
+    // Neutral Theme
+    $mdThemingProvider.theme('default')
+        .primaryPalette('blue-grey')
+        .accentPalette('green');
+
+    // ST-M 
+    $mdThemingProvider.theme('stMale')
+        .primaryPalette('blue')
+        .accentPalette('green');
+
+    // ST-M 
+    $mdThemingProvider.theme('stFemale')
+        .primaryPalette('purple')
+        .accentPalette('pink');
+
+    $mdThemingProvider.setDefaultTheme('default');
+
+
+
 });
