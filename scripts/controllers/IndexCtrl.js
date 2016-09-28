@@ -10,11 +10,12 @@ angular.module('capstone').controller("IndexCtrl", function($scope, $window) {
         if ($scope.answers.length < 20) {
             $scope.msg = "Por favor, responda todas as perguntas!"
         } else {
-            var sum = $scope.answers.reduce(add, 0);
-
-            function add(a, b) {
+             function add(a, b) {
                 return parseInt(a) + parseInt(b);
             }
+
+            var sum = $scope.answers.reduce(add, 0);
+          
 
             console.log(sum);
             $window.location.href = "views/tutor.html";
