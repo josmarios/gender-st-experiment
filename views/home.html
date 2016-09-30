@@ -1,7 +1,3 @@
-<!-- <div layout="column" class="overflow"> -->
-<!-- <div layout="row"> -->
-<!--Content -->
-<!-- <md-card layout="column" flex="60" flex-offset="20" class="card-over"> -->
 <md-content class="card-over">
     <div layout="row" layout-align="center center">
         <h2> Tarefas</h2>
@@ -17,47 +13,30 @@
         <md-button ng-click="showPosttest()" class="md-raised md-accent" ng-show="showNext">Feito.
             <br> Vamos para a última etapa!</md-button>
     </md-card>
-    <!--  <md-card layout="column" layout-align="center center" ng-show="false">
-        <h4> Atividade 2</h4>
-        <div>
-            <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">star</i>
-        </div>
-        <div>
-        <md-button class="md-raised" ng-click="showProblems()">
-            Iniciar
-        </md-button>
-    </md-card> -->
-    <!-- </md-card> -->
-    <!-- Right Panel -->
-    <!--  <div layout="column" flex="20" flex-offset="10" ng-show="false">
-            <md-card layout="column" layout-align="center center">
-                <i class="material-icons" style="font-size:96px">person</i>
-              
-                <md-card-content>
-                    <p>Meu Nome</p>
-                    <h4>Pontos: 500</h4>
-                </md-card-content>
-            </md-card>
-            <md-card layout="column">
-                <md-card-title>
-                    <h3>Ranking</h3>
-                </md-card-title>
-                <md-card-content>
-                    <md-list>
-                        <md-list-item ng-repeat="a in ['Alex','Beto','Camila','Daniel','Eva']">
-                            <label>{{$index+1}} - {{a}}</label>
-                        </md-list-item>
-                        <md-list-item>
-                            <label><b>6 - Eu</b></label>
-                        </md-list-item>
-                    </md-list>
-                </md-card-content>
-            </md-card>
-        </div> -->
-    <!-- </div> -->
+ 
+    <!-- Right Panel (hidden) -->
+    <div layout="column" flex="20" flex-offset="10" ng-show="false">
+        <md-card layout="column" layout-align="center center">
+            <i class="material-icons" style="font-size:96px">person</i>
+            <md-card-content>
+                <p>Meu Nome</p>
+                <h4>Pontos: 500</h4>
+            </md-card-content>
+        </md-card>
+        <md-card layout="column">
+            <md-card-title>
+                <h3>Ranking</h3>
+            </md-card-title>
+            <md-card-content>
+                <md-list>
+                    <md-list-item ng-repeat="a in ['Alex','Beto','Camila','Daniel','Eva']">
+                        <label>{{$index+1}} - {{a}}</label>
+                    </md-list-item>
+                    <md-list-item>
+                        <label><b>6 - Eu</b></label>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
+        </md-card>
+    </div>
 </md-content>
-<!-- <div layout="row" layout-align="center center">
-    <md-button ng-click="showPosttest()" class="md-raised md-accent" ng-show="showNext">Feito.
-        <br> Vamos para a última etapa!</md-button>
-</div> -->
-<!-- </div> -->

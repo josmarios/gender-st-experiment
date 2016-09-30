@@ -3,10 +3,10 @@
         <img src="{{question}}" flex="50">
         <md-list ng-click="check()" layout="column" flex="20" flex-offset="5">
             <h1>Resposta: </h1>
-            <md-list-item flex ng-repeat="item in items" ng-click="setCurrent($index)" class="md-primary">
+            <md-button class="md-accent md-hue-3" flex ng-repeat="item in items" ng-click="setCurrent($index)">
                 <h3>Letra {{item}}</h3>
-            </md-list-item>
+            </md-button>
         </md-list>
     </div>
-    <md-progress-linear md-mode="determinate" value="{{progress}}"></md-progress-linear>
+    <md-progress-linear class="md-primary" md-mode="determinate" value="{{progress}}"></md-progress-linear>
 </md-content>

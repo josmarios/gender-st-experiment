@@ -21,18 +21,21 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
     // Neutral Theme
     $mdThemingProvider.theme("default")
         .primaryPalette("blue-grey")
-        .accentPalette("green");
+        .accentPalette("blue-grey")
+        .warnPalette("blue-grey");
 
     // ST-M 
     $mdThemingProvider.theme("stMale")
         .primaryPalette("blue")
-        .accentPalette("green");
+        .accentPalette("blue")
+        .warnPalette("blue");
 
     // ST-M 
     $mdThemingProvider.theme("stFemale")
         .primaryPalette("purple")
-        .accentPalette("pink");
+        .accentPalette("purple")
+        .warnPalette("purple");
 
-    // $mdThemingProvider.setDefaultTheme("default");
-    // $mdThemingProvider.alwaysWatchTheme(true);
+     $mdThemingProvider.setDefaultTheme("stFemale");
+     $mdThemingProvider.alwaysWatchTheme(true);
 });
