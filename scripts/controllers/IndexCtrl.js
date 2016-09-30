@@ -19,8 +19,6 @@ angular.module('capstone').controller("IndexCtrl", function($scope, $window) {
 
             console.log(sum);
             $window.location.href = "views/tutor.html";
-
-
         };
     }
 

@@ -1,4 +1,4 @@
-<div ng-controller="Set1Ctrl" layout="column">
+<md-content ng-controller="Set1Ctrl" layout="column" class="card-over">
     <div layout="row">
         <img src="{{question}}" flex="50">
         <md-list ng-click="check()" layout="column" flex="20" flex-offset="5">
@@ -9,5 +9,4 @@
         </md-list>
     </div>
     <md-progress-linear md-mode="determinate" value="{{progress}}"></md-progress-linear>
-    <!-- <md-button>Próximo</md-button> -->
-</div>
+</md-content>

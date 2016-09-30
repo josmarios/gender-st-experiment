@@ -1,19 +1,23 @@
-angular.module('tutor').controller("HomeCtrl", function($scope, $location) {
+angular.module('tutor').controller("HomeCtrl", function($scope, $location, tutorServices) {
+    console.log("HomeCtrl ok");
 
-    console.log("home ctrl ok");
-
+    $scope.showNext = tutorServices.nextOn;
 
     $scope.showPosttest = function() {
-        console.log("show posttest ok");
-
         $location.path("/posttest");
-
     };
-
 
     $scope.showProblems = function() {
-      
         $location.path("/set1");
-
     };
+
+    $scope.getStars = function() {
+
+        if (tutorServices.nextOn){
+        	return "star";
+        }
+
+        return "star_border";
+    }
+
 });

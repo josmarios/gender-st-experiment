@@ -1,37 +1,38 @@
-<div layout="column">
-    <div layout="row">
-        <!--Content -->
-        <md-card layout="column" flex="50" flex-offset="10">
-            <div layout="row" layout-align="center center">
-                <h2> Tarefas</h2>
-            </div>
-            <md-card layout="column" layout-align="center center">
-                <h4> Atividade 1</h4>
-                <div>
-                    <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">star</i>
-                </div>
-                <md-button class="md-raised" ng-click="showProblems()">
-                    Iniciar
-                </md-button>
-            </md-card>
-
-            <md-card layout="column" layout-align="center center">
-                <h4> Atividade 2</h4>
-                <div>
-                    <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">star</i>
-                </div>
-                <md-button class="md-raised" ng-click="showProblems()">
-                    Iniciar
-                </md-button>
-            </md-card>
-
-            
-        </md-card>
-        <!-- Right Panel -->
-        <div layout="column" flex="20" flex-offset="10">
+<!-- <div layout="column" class="overflow"> -->
+<!-- <div layout="row"> -->
+<!--Content -->
+<!-- <md-card layout="column" flex="60" flex-offset="20" class="card-over"> -->
+<md-content class="card-over">
+    <div layout="row" layout-align="center center">
+        <h2> Tarefas</h2>
+    </div>
+    <md-card layout="column" layout-align="center center">
+        <h4> Atividade 1</h4>
+        <div>
+            <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">{{getStars()}}</i>
+        </div>
+        <md-button class="md-raised md-primary" ng-click="showProblems()" ng-show="!showNext">
+            Iniciar
+        </md-button>
+        <md-button ng-click="showPosttest()" class="md-raised md-accent" ng-show="showNext">Feito.
+            <br> Vamos para a última etapa!</md-button>
+    </md-card>
+    <!--  <md-card layout="column" layout-align="center center" ng-show="false">
+        <h4> Atividade 2</h4>
+        <div>
+            <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">star</i>
+        </div>
+        <div>
+        <md-button class="md-raised" ng-click="showProblems()">
+            Iniciar
+        </md-button>
+    </md-card> -->
+    <!-- </md-card> -->
+    <!-- Right Panel -->
+    <!--  <div layout="column" flex="20" flex-offset="10" ng-show="false">
             <md-card layout="column" layout-align="center center">
                 <i class="material-icons" style="font-size:96px">person</i>
-                <!-- <img src="../assets/images/man-user.png"> -->
+              
                 <md-card-content>
                     <p>Meu Nome</p>
                     <h4>Pontos: 500</h4>
@@ -52,10 +53,11 @@
                     </md-list>
                 </md-card-content>
             </md-card>
-        </div>
-
-    </div>
-    <div layout="row" layout-align="center center">
-        <md-button ng-click="showPosttest()" class="md-raised md-primary">Feito.<br> Vamos para a última etapa!</md-button>
-    </div>
-</div>
+        </div> -->
+    <!-- </div> -->
+</md-content>
+<!-- <div layout="row" layout-align="center center">
+    <md-button ng-click="showPosttest()" class="md-raised md-accent" ng-show="showNext">Feito.
+        <br> Vamos para a última etapa!</md-button>
+</div> -->
+<!-- </div> -->

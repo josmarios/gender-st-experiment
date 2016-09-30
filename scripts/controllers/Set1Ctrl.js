@@ -1,4 +1,4 @@
-angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDialog, $location) {
+angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDialog, $location, tutorServices) {
 
     $scope.question = "../assets/images/q-0.png"
     $scope.items = ['A', 'B', 'C', 'D', 'E'];
@@ -13,7 +13,6 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
     $scope.setCurrent = function setCurrent(index) {
         userAnswer = $scope.items[index];
     };
-
 
     $scope.check = function(ev) {
 
@@ -31,11 +30,8 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
                 clickOutsideToClose: true,
                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
             };
-         
-            // currentQuestion++;
-            // $scope.progress = 100 * (currentQuestion + 1) / 20;
-            // $scope.question = "../assets/images/q-" + currentQuestion + ".png"
-            
+
+
         } else {
 
             //show dialog
@@ -54,12 +50,14 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
 
         $mdDialog.show(dialogType);
 
- currentQuestion++;
-            $scope.progress = 100 * (currentQuestion + 1) / 20;
-            $scope.question = "../assets/images/q-" + currentQuestion + ".png"
+        currentQuestion++;
+        $scope.progress = 100 * (currentQuestion + 1) / 20;
+        $scope.question = "../assets/images/q-" + currentQuestion + ".png"
 
-        if(currentQuestion>=20){
-        	  $location.path("/home");
+        if (currentQuestion >= 20) {
+            tutorServices.nextOn = true;
+            $location.path("/home");
+
 
         }
 
