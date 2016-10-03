@@ -17,7 +17,6 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
         redirectTo: "/home"
     });
 
-
     // Neutral Theme
     $mdThemingProvider.theme("default")
         .primaryPalette("blue-grey")
@@ -35,7 +34,7 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
         .primaryPalette("purple")
         .accentPalette("purple")
         .warnPalette("purple");
+    // $rootScope.setTheme("stMale");
+    // $mdThemingProvider.
 
-     $mdThemingProvider.setDefaultTheme("stFemale");
-     $mdThemingProvider.alwaysWatchTheme(true);
 });

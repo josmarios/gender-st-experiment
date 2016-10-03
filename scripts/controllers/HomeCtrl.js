@@ -3,7 +3,6 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, tutor
 
     $scope.showNext = tutorServices.nextOn;
 
-
     $scope.showPosttest = function() {
         $location.path("/posttest");
     };
