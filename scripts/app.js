@@ -1,13 +1,9 @@
-angular.module('capstone', ['ngRoute', 'ngResource', 'ngAnimate', 'ngMaterial']).config(function($mdThemingProvider) {
+angular.module('capstone', ['ngRoute', 'ngResource', 'ngAnimate', 'ngMaterial', "tutor.services"]).config(function($mdThemingProvider) {
 
     // Neutral Theme
     $mdThemingProvider.theme("default")
         .primaryPalette("blue-grey")
         .accentPalette("blue-grey")
         .warnPalette("blue-grey");
-
-    // $rootScope.setTheme = function(key) {
-        // 	$mdThemingProvider.
-        // }
 
 });

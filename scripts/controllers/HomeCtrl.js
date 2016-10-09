@@ -1,7 +1,7 @@
-angular.module('tutor').controller("HomeCtrl", function($scope, $location, tutorServices) {
+angular.module('tutor').controller("HomeCtrl", function($scope, $location, configService, User) {
     console.log("HomeCtrl ok");
 
-    $scope.showNext = tutorServices.nextOn;
+    $scope.showNext = configService.nextOn;
 
     $scope.showPosttest = function() {
         $location.path("/posttest");
@@ -13,11 +13,15 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, tutor
 
     $scope.getStars = function() {
 
-        if (tutorServices.nextOn){
-        	return "star";
+        if (configService.nextOn) {
+            return "star";
         }
 
         return "star_border";
+    };
+
+    $scope.getPoints = function() {
+        return User.getResponse().activityPoints;
     }
 
 });

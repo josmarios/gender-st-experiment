@@ -1,4 +1,4 @@
-angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tutor.services"]).config(function($routeProvider, $mdThemingProvider) {
+angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial" ,"tutor.services"]).config(function($routeProvider) {
 
     $routeProvider.
     when("/home", {
@@ -17,6 +17,10 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
         redirectTo: "/home"
     });
 
+}).config(function($mdThemingProvider) {
+
+    //$mdThemingProvider.alwaysWatchTheme(true);
+
     // Neutral Theme
     $mdThemingProvider.theme("default")
         .primaryPalette("blue-grey")
@@ -34,7 +38,8 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
         .primaryPalette("purple")
         .accentPalette("purple")
         .warnPalette("purple");
-    // $rootScope.setTheme("stMale");
-    // $mdThemingProvider.
+
+    // console.log(tutorServices.getTheme());
+    // $mdThemingProvider.setDefaultTheme(tutorServices.getTheme());
 
 });

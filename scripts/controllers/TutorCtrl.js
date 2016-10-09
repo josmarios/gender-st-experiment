@@ -1,6 +1,10 @@
-angular.module('tutor').controller("TutorCtrl", function($scope, $window, $mdThemingProvider, tutorServices) {
+angular.module('tutor').controller("TutorCtrl", function($scope, $window, configService, User) {
     console.log("tutor ctrl ok");
 
-    $mdThemingProvider.setDefaultTheme(tutorServices.getTheme());
 
+    console.log("user gender: "+ User.getResponse().gender );
+
+    $scope.dynamicTheme = function() {
+        return configService.getTheme();
+    }
 });
