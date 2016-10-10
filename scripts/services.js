@@ -1,8 +1,8 @@
 var tutorServices = angular.module("tutor.services", []);
 
-tutorServices.service("configService", function($rootScope) {
+tutorServices.service("configService", function() {
 
-    var currentTheme = "default";
+    var currentTheme = "stMale";
     var next = false;
 
     this.setTheme = function(value) {
@@ -22,15 +22,9 @@ tutorServices.service("configService", function($rootScope) {
         return next;
     }
 
-    // return {
-    //     setTheme: setTheme,
-    //     getTheme: getTheme,
-    //     setNext: setNext,
-    //     getNext: getNext
-    // };
 });
 
-tutorServices.service("User", function() {
+tutorServices.service("User", function($http) {
     var response = {
         gender: "",
         age: "",
@@ -67,16 +61,23 @@ tutorServices.service("User", function() {
 
     this.getResponse = function() {
         return response;
-    }
+    };
 
-    // return {
-    //     setGender: setGender,
-    //     setAge: setAge,
-    //     setTestType: setTestType,
-    //     setPretestPoints: setPretestPoints,
-    //     setPosttestPoints: setPosttestPoints,
-    //     setActivityPoints: setActivityPoints,
-    //     getResponse: getResponse
-    // };
+    this.save = function() {
+        $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
+        $http({
+            url: "http://localhost:8080/CapstoneBackend/CapstoneServlet",
+            method: "POST",
+            data: JSON.stringify(response)
+        }).then(function(response) {
+            // success
+            console.log("Response sent!");
+
+        }, function(response) {
+            // failed
+            console.error("Failed on submitting answer.");
+        });
+    };
 
 });

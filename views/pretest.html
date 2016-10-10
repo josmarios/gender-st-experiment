@@ -1,0 +1,67 @@
+<div>
+    <md-toolbar layout="column" layout-align="center center">
+        <h1>Instruções</h1>
+    </md-toolbar>
+    <div layout="row" layout-align="center center">
+        <md-card layout="column" layout-align="center center" flex="50">
+            <md-card-content>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae elit ligula. Nulla finibus id orci vitae molestie. Integer gravida semper odio. Donec ultrices lacus at libero posuere, eu accumsan sapien malesuada. Phasellus sed arcu ac dolor pretium ornare. Nunc id pellentesque turpis. Morbi quis tempor eros. Morbi aliquet justo vel tristique lobortis. Aliquam dapibus augue ante, eu ultricies mi sollicitudin ac. Aliquam sit amet ligula id felis placerat dignissim. Donec ante odio, placerat faucibus enim ut, egestas volutpat tortor. Nam sit amet diam elit. Cras quis aliquet ex. Proin molestie tincidunt rhoncus. Vivamus in dolor viverra, dapibus elit non, posuere neque. Aenean in congue ligula.
+            </md-card-content>
+            <md-card-actions>
+                <md-button ng-click="start=true" class="md-primary md-raised">Entendi. Vamos começar!</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+    <div layout="row" layout-align="center center" ng-show="start" class="bg">
+        <md-card layout="column" layout-align="center center" flex="50">
+            <md-card-title>
+                <h2>Questionário Inicial</h2>
+            </md-card-title>
+            <md-card-content>
+                <form>
+                    <div layout="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Sexo</label>
+                            <md-select ng-model="gender">
+                                <md-option ng-repeat="g in ['Masculino','Feminino']">
+                                    {{g}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Idade</label>
+                            <md-select ng-model="age">
+                                <md-option ng-repeat="a in ['Menos de 18','18-24','25-34','35-44','45-54','Mais de 55']">
+                                    {{a}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div ng-repeat="q in questions">
+                        <h3>{{q}}</h3>
+                        <div layout="row">
+                            <p>Absolutamente Não </p>
+                            <md-radio-group ng-model="answers[$index]" layout="row">
+                                <label>1</label>
+                                <md-radio-button value="1" aria-label="option 1"></md-radio-button>
+                                <label>2</label>
+                                <md-radio-button value="2" aria-label="option 2"></md-radio-button>
+                                <label>3</label>
+                                <md-radio-button value="3" aria-label="option 3"></md-radio-button>
+                                <label>4</label>
+                                <md-radio-button value="4" aria-label="option 4"></md-radio-button>
+                            </md-radio-group>
+                            <p>Muitíssimo</p>
+                        </div>
+                        </p>
+                        </p>
+                        <md-divider></md-divider>
+                    </div>
+                    <md-button ng-click="processAnswers()" type="submit" class="md-raised md-primary">Próxima Etapa</md-button>
+                    <span>{{msg}}
+                    </span>
+                </form>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>

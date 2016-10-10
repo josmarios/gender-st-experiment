@@ -1,7 +1,14 @@
 angular.module('tutor').controller("HomeCtrl", function($scope, $location, configService, User) {
     console.log("HomeCtrl ok");
 
-    $scope.showNext = configService.nextOn;
+    $scope.showNext = function() {
+        return configService.getNext();
+    };
+
+    $scope.dynamicTheme = function() {
+        console.log("theme: " + configService.getTheme());
+        return configService.getTheme();
+    };
 
     $scope.showPosttest = function() {
         $location.path("/posttest");

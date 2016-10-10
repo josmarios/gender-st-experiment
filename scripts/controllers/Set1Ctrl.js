@@ -7,16 +7,17 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
     var userAnswer = null;
     var totalPoints = 0;
 
-
     var currentQuestion = 0;
     $scope.progress = 0;
 
+    $scope.dynamicTheme = function() {
+        return configService.getTheme();
+    };
     $scope.setCurrent = function setCurrent(index) {
         userAnswer = $scope.items[index];
     };
 
     $scope.check = function(ev) {
-
 
         var dialogType = null;
         //right answer
@@ -34,7 +35,6 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
             };
 
-
         } else {
 
             //show dialog
@@ -47,9 +47,7 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
                 backgroundColor: 'transparent',
                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
             };
-
         }
-
 
         $mdDialog.show(dialogType);
 
@@ -60,10 +58,8 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
         if (currentQuestion >= 20) {
             configService.setNext(true);
             User.setActivityPoints(totalPoints);
-            console.log("total points: " + totalPoints);
+            console.log(User.getResponse());
             $location.path("/home");
-
-
         }
 
 

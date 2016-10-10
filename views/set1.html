@@ -1,12 +1,15 @@
-<md-content ng-controller="Set1Ctrl" layout="column" class="card-over">
-    <div layout="row">
-        <img src="{{question}}" flex="50">
-        <md-list ng-click="check()" layout="column" flex="20" flex-offset="5">
-            <h1>Resposta: </h1>
-            <md-button class="md-accent md-hue-3" flex ng-repeat="item in items" ng-click="setCurrent($index)">
-                <h3>Letra {{item}}</h3>
-            </md-button>
-        </md-list>
-    </div>
-    <md-progress-linear class="md-primary" md-mode="determinate" value="{{progress}}"></md-progress-linear>
-</md-content>
+<div md-theme="{{dynamicTheme()}}">
+    <md-toolbar></md-toolbar>
+    <md-content ng-controller="Set1Ctrl" layout="column" class="card-over" flex-offset="20" flex="60">
+        <div layout="row">
+            <img src="{{question}}" flex="50">
+            <md-list ng-click="check()" layout="column" flex="20" flex-offset="5">
+                <h1>Resposta: </h1>
+                <md-button class="md-accent md-hue-3" flex ng-repeat="item in items" ng-click="setCurrent($index)">
+                    <h3>Letra {{item}}</h3>
+                </md-button>
+            </md-list>
+        </div>
+        <md-progress-linear class="md-primary" md-mode="determinate" value="{{progress}}"></md-progress-linear>
+    </md-content>
+</div>

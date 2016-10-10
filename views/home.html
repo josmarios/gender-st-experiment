@@ -1,42 +1,47 @@
-<md-content class="card-over">
-    <div layout="row" layout-align="center center">
-        <h2> Tarefas</h2>
-    </div>
-    <md-card layout="column" layout-align="center center">
-        <h4> Atividade 1</h4>
-        <div>
-            <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">{{getStars()}}</i>
+<div md-theme="{{dynamicTheme()}}">
+<md-toolbar></md-toolbar>
+
+<md-card flex="60" flex-offset="20" >
+    <md-content class="card-over">
+        <div layout="row" layout-align="center center">
+            <h2> Tarefas</h2>
         </div>
-        <md-button class="md-raised md-primary" ng-click="showProblems()" ng-show="!showNext">
-            Iniciar
-        </md-button>
-        <md-button ng-click="showPosttest()" class="md-raised md-accent" ng-show="showNext">Feito.
-            <br> Vamos para a última etapa!</md-button>
-    </md-card>
- 
-    <!-- Right Panel (hidden) -->
-    <div layout="column" flex="20" flex-offset="10" ng-show="false">
         <md-card layout="column" layout-align="center center">
-            <i class="material-icons" style="font-size:96px">person</i>
-            <md-card-content>
-                <p>Meu Nome</p>
-                <h4>Pontos: {{getPoints()}}</h4>
-            </md-card-content>
+            <h4> Atividade 1</h4>
+            <div>
+                <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">{{getStars()}}</i>
+            </div>
+            <md-button class="md-raised md-primary" ng-click="showProblems()" ng-show="!showNext()">
+                Iniciar
+            </md-button>
+            <md-button ng-click="showPosttest()" class="md-raised md-accent" ng-show="showNext()">Feito.
+                <br> Vamos para a última etapa!</md-button>
         </md-card>
-        <md-card layout="column">
-            <md-card-title>
-                <h3>Ranking</h3>
-            </md-card-title>
-            <md-card-content>
-                <md-list>
-                    <md-list-item ng-repeat="a in ['Alex','Beto','Camila','Daniel','Eva']">
-                        <label>{{$index+1}} - {{a}}</label>
-                    </md-list-item>
-                    <md-list-item>
-                        <label><b>6 - Eu</b></label>
-                    </md-list-item>
-                </md-list>
-            </md-card-content>
-        </md-card>
-    </div>
-</md-content>
+        <!-- Right Panel (hidden) -->
+        <div layout="column" flex="20" flex-offset="10" ng-show="false">
+            <md-card layout="column" layout-align="center center">
+                <i class="material-icons" style="font-size:96px">person</i>
+                <md-card-content>
+                    <p>Meu Nome</p>
+                    <h4>Pontos: {{getPoints()}}</h4>
+                </md-card-content>
+            </md-card>
+            <md-card layout="column">
+                <md-card-title>
+                    <h3>Ranking</h3>
+                </md-card-title>
+                <md-card-content>
+                    <md-list>
+                        <md-list-item ng-repeat="a in ['Alex','Beto','Camila','Daniel','Eva']">
+                            <label>{{$index+1}} - {{a}}</label>
+                        </md-list-item>
+                        <md-list-item>
+                            <label><b>6 - Eu</b></label>
+                        </md-list-item>
+                    </md-list>
+                </md-card-content>
+            </md-card>
+        </div>
+    </md-content>
+</md-card>
+</div>
