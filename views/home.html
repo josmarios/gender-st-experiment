@@ -10,22 +10,20 @@
             </md-card-title>
             <md-card-content>
                 <md-list>
-                    <md-list-item ng-repeat="a in ['Alex','Beto','Camila','Daniel','Eva']">
-                        <div flex="15">
-                            <img ng-src="{{getRanking()}}">
-                        </div>
+                    <md-list-item ng-repeat="a in ['Ana','Beto','Camila','Daniel','Eva']">
+                        <img ng-src="{{getRanking()}}" width="30px">
                         <label>{{a}} ({{$index+1}})</label>
                     </md-list-item>
                     <md-list-item>
-                        <div flex="15">
-                            <img ng-src="{{getRanking()}}">
-                        </div>
-                        <label><b>Eu (6)</b></label>
+                       
+                            <img ng-src="{{getRanking()}}"  width="30px">
+                       
+                        <label><b>Alex (6)</b></label>
                     </md-list-item>
                 </md-list>
             </md-card-content>
         </md-card>
-        <md-card flex="60 " class="card-over " layout="column ">
+        <md-card flex="60 " class="card-over" layout="column ">
             <div layout="row " layout-align="center center ">
                 <h2> Tarefas</h2>
             </div>
@@ -46,18 +44,18 @@
         <!-- Right Panel  -->
         <div layout="column " flex="15 " ng-show="true " class="card-over ">
             <md-card layout="column " layout-align="center center ">
-                <i class="material-icons " style="font-size:96px ">person</i>
-                <md-card-content>
-                    <p>Meu Nome</p>
+                <md-card-content layout="column" layout-align="center center">
+                    <img ng-src="{{getAvatar()}}" flex>
+                    <p>Alex</p>
                     <h4>Pontos: {{getPoints()}}</h4>
                 </md-card-content>
             </md-card>
-            <md-card layout="column " ng-show="true ">
+            <md-card layout="column " ng-show="true " layout-align="center center">
                 <md-card-title>
                     <h3>Meus Trofeus</h3>
                 </md-card-title>
-                <md-card-content>
-                    <img src="assets/images/badge.png " flex="50 ">
+                <md-card-content layout="row" layout-align="center center">
+                    <img ng-src="{{getBadge()}}" flex="50">
                 </md-card-content>
             </md-card>
         </div>

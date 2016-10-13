@@ -35,4 +35,12 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, confi
         return "assets/" + configService.getTheme() + "/images/ranking.svg";
     };
 
+    $scope.getBadge = function() {
+        return "assets/" + configService.getTheme() + "/images/badge.svg";
+    };
+
+    $scope.getAvatar = function() {
+        return "assets/" + configService.getTheme() + "/images/avatar.svg";
+    };
+
 });
