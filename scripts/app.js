@@ -2,23 +2,23 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
 
     $routeProvider.
     when("/pretest", {
-        templateUrl: "../views/pretest.html",
+        templateUrl: "views/pretest.html",
         controller: "PretestCtrl"
     }).
     when("/home", {
-        templateUrl: "../views/home.html",
+        templateUrl: "views/home.html",
         controller: "HomeCtrl"
     }).
     when("/posttest", {
-        templateUrl: "../views/posttest.html",
+        templateUrl: "views/posttest.html",
         controller: "PosttestCtrl"
     }).
     when("/set1", {
-        templateUrl: "../views/set1.html",
+        templateUrl: "views/set1.html",
         controller: "Set1Ctrl"
     }).
     when("/finish", {
-        templateUrl: "../views/finish.html",
+        templateUrl: "views/finish.html",
         controller: "FinishCtrl"
     }).
     otherwise({

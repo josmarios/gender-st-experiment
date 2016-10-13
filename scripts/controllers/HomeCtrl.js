@@ -32,7 +32,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, confi
     }
 
     $scope.getRanking = function() {
-        return "../assets/" + configService.getTheme() + "/images/ranking.svg";
+        return "assets/" + configService.getTheme() + "/images/ranking.svg";
     };
 
 });

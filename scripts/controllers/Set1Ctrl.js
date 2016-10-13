@@ -10,7 +10,7 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
     var currentQuestion = 0;
 
     $scope.question = function() {
-        return "../assets/" + configService.getTheme() + "/images/q-0.png";
+        return "assets/" + configService.getTheme() + "/images/q-0.png";
     };
 
     $scope.dynamicTheme = function() {
@@ -39,7 +39,7 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
             //show dialog
             dialogType = {
                 controller: 'RightCtrl',
-                templateUrl: '../views/right.html',
+                templateUrl: 'views/right.html',
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
@@ -50,7 +50,7 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
             //show dialog
             dialogType = {
                 controller: 'WrongCtrl',
-                templateUrl: '../views/wrong.html',
+                templateUrl: 'views/wrong.html',
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 backgroundColor: 'transparent',
@@ -64,7 +64,7 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
         $scope.progress = 100 * (currentQuestion + 1) / 20;
         $scope
             .question = function() {
-                return "../assets/" + configService.getTheme() + "/images/q-" + currentQuestion + ".png";
+                return "assets/" + configService.getTheme() + "/images/q-" + currentQuestion + ".png";
             };
 
         if (currentQuestion >= 20) {
