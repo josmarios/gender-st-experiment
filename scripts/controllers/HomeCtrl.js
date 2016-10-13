@@ -31,4 +31,8 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, confi
         return User.getResponse().activityPoints;
     }
 
+    $scope.getRanking = function() {
+        return "../assets/" + configService.getTheme() + "/images/ranking.svg";
+    };
+
 });

@@ -1,47 +1,65 @@
 <div md-theme="{{dynamicTheme()}}">
-<md-toolbar></md-toolbar>
-
-<md-card flex="60" flex-offset="20" >
-    <md-content class="card-over">
-        <div layout="row" layout-align="center center">
-            <h2> Tarefas</h2>
-        </div>
-        <md-card layout="column" layout-align="center center">
-            <h4> Atividade 1</h4>
-            <div>
-                <i ng-repeat="n in [1,2,3,4,5]" class="material-icons">{{getStars()}}</i>
-            </div>
-            <md-button class="md-raised md-primary" ng-click="showProblems()" ng-show="!showNext()">
-                Iniciar
-            </md-button>
-            <md-button ng-click="showPosttest()" class="md-raised md-accent" ng-show="showNext()">Feito.
-                <br> Vamos para a última etapa!</md-button>
+    <md-toolbar layout-align="center center">
+        <h1>Tutor</h1>
+    </md-toolbar>
+    <md-toolbar></md-toolbar>
+    <div layout="row" flex-offset="5">
+        <md-card layout="column" flex="15" class="card-over" layout-margin>
+            <md-card-title>
+                <h3>Ranking</h3>
+            </md-card-title>
+            <md-card-content>
+                <md-list>
+                    <md-list-item ng-repeat="a in ['Alex','Beto','Camila','Daniel','Eva']">
+                        <div flex="15">
+                            <img ng-src="{{getRanking()}}">
+                        </div>
+                        <label>{{a}} ({{$index+1}})</label>
+                    </md-list-item>
+                    <md-list-item>
+                        <div flex="15">
+                            <img ng-src="{{getRanking()}}">
+                        </div>
+                        <label><b>Eu (6)</b></label>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
         </md-card>
-        <!-- Right Panel (hidden) -->
-        <div layout="column" flex="20" flex-offset="10" ng-show="false">
-            <md-card layout="column" layout-align="center center">
-                <i class="material-icons" style="font-size:96px">person</i>
+        <md-card flex="60 " class="card-over " layout="column ">
+            <div layout="row " layout-align="center center ">
+                <h2> Tarefas</h2>
+            </div>
+            <div layout="row " layout-align="center center ">
+                <md-card flex="80 " layout="column " layout-align="center center ">
+                    <h4> Atividade 1</h4>
+                    <div>
+                        <i ng-repeat="n in [1,2,3,4,5] " class="material-icons ">{{getStars()}}</i>
+                    </div>
+                    <md-button class="md-raised md-primary " ng-click="showProblems() " ng-show="!showNext() ">
+                        Iniciar
+                    </md-button>
+                    <md-button ng-click="showPosttest() " class="md-raised md-accent " ng-show="showNext() ">Feito.
+                        <br> Vamos para a última etapa!</md-button>
+                </md-card>
+            </div>
+        </md-card>
+        <!-- Right Panel  -->
+        <div layout="column " flex="15 " ng-show="true " class="card-over ">
+            <md-card layout="column " layout-align="center center ">
+                <i class="material-icons " style="font-size:96px ">person</i>
                 <md-card-content>
                     <p>Meu Nome</p>
                     <h4>Pontos: {{getPoints()}}</h4>
                 </md-card-content>
             </md-card>
-            <md-card layout="column">
+            <md-card layout="column " ng-show="true ">
                 <md-card-title>
-                    <h3>Ranking</h3>
+                    <h3>Meus Trofeus</h3>
                 </md-card-title>
                 <md-card-content>
-                    <md-list>
-                        <md-list-item ng-repeat="a in ['Alex','Beto','Camila','Daniel','Eva']">
-                            <label>{{$index+1}} - {{a}}</label>
-                        </md-list-item>
-                        <md-list-item>
-                            <label><b>6 - Eu</b></label>
-                        </md-list-item>
-                    </md-list>
+                    <img src="../assets/images/badge.png " flex="50 ">
                 </md-card-content>
             </md-card>
         </div>
-    </md-content>
-</md-card>
+    </div>
 </div>

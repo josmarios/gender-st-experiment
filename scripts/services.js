@@ -2,7 +2,7 @@ var tutorServices = angular.module("tutor.services", []);
 
 tutorServices.service("configService", function() {
 
-    var currentTheme = "stMale";
+    var currentTheme = "stFemale";
     var next = false;
 
     this.setTheme = function(value) {
@@ -21,7 +21,6 @@ tutorServices.service("configService", function() {
     this.getNext = function() {
         return next;
     }
-
 });
 
 tutorServices.service("User", function($http) {
