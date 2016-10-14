@@ -60,6 +60,10 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
 
         $mdDialog.show(dialogType);
 
+        setTimeout(function() {
+            $mdDialog.hide();
+        }, 1500);
+
         currentQuestion++;
         $scope.progress = 100 * (currentQuestion + 1) / 20;
         $scope
