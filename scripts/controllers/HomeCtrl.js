@@ -1,4 +1,4 @@
-angular.module('tutor').controller("HomeCtrl", function($scope, $location, configService, User) {
+angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDialog, configService, User) {
     console.log("HomeCtrl ok");
 
     $scope.badges = [];
@@ -46,7 +46,15 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, confi
     };
 
     $scope.getAvatar = function() {
-        return "assets/" + configService.getTheme() + "/images/avatar.svg";
+        return configService.getAvatar();
     };
+
+    $mdDialog.show({
+        controller: 'AvatarCtrl',
+        templateUrl: 'views/avatar.html',
+        parent: angular.element(document.body),
+        clickOutsideToClose: true,
+        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+    });
 
 });

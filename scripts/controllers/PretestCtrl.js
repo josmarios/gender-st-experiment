@@ -18,10 +18,12 @@ angular.module('tutor').controller("PretestCtrl", function($scope, $window, $loc
 
         var sum = $scope.answers.reduce(add, 0);
 
-        configService.setTheme(themes[random]);
+        // configService.setTheme(themes[random]);
+        configService.setTheme("stFemale");
         User.setGender($scope.gender);
         User.setAge($scope.age);
-        User.setTestType(themes[random]);
+        //  User.setTestType(themes[random]);
+        User.setTestType("stFemale");
         User.setPretestPoints(sum);
 
         console.log(User.getResponse());

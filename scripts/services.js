@@ -5,11 +5,14 @@ tutorServices.service("configService", function() {
     var opts = ["default", "stFemale", "stMale"];
 
     var random = Math.floor((Math.random() * 10000)) % 3;
-    var currentTheme = opts[random];
+    // var currentTheme = opts[random];
+    var currentTheme = "stFemale";
 
     var next = false;
 
     var badgeFlags = [false, false, false];
+
+    var avatar = null;
 
     this.setTheme = function(value) {
         console.log("setting theme: " + value);
@@ -34,6 +37,14 @@ tutorServices.service("configService", function() {
 
     this.getBadges = function() {
         return badgeFlags;
+    };
+
+    this.setAvatar = function(value) {
+        avatar = value;
+    };
+
+    this.getAvatar = function() {
+        return avatar;
     };
 });
 

@@ -9,6 +9,47 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
 
     var currentQuestion = 0;
 
+    $scope.getPoints = function() {
+        return totalPoints;
+    };
+
+    var updateRanking = function() {
+
+        $scope.users = [{
+            name: "Alex",
+            points: 80
+        }, {
+            name: "Valentine",
+            points: 75
+        }, {
+            name: "Francis",
+            points: 63
+        }, {
+            name: "Danni",
+            points: 40
+        }, {
+            name: "Muriel",
+            points: 31
+        }, {
+            name: "Rosemar",
+            points: 15
+        }, {
+            name: "Eu",
+            points: totalPoints
+        }];
+
+        //sorts users
+        var sortedList = $scope.users.slice(0);
+        sortedList.sort(function(a, b) {
+            return a.points - b.points;
+        });
+
+        $scope.users = sortedList.reverse();
+    };
+
+    //updates ranking
+    updateRanking();
+
     $scope.question = function() {
         return "assets/" + configService.getTheme() + "/images/q-0.png";
     };
@@ -24,12 +65,8 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
         return Math.trunc(totalPoints / 10);
     };
 
-    $scope.getPoints = function() {
-        return totalPoints;
-    };
-
     $scope.getQuestion = function() {
-        return currentQuestion+1;
+        return currentQuestion + 1;
     };
 
     $scope.processAnswer = function(value) {
@@ -39,6 +76,7 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
         //right answer
         if (userAnswer == answers[currentQuestion]) {
 
+            //increases user's points
             totalPoints += 5;
 
             //badge level 5
@@ -132,6 +170,8 @@ angular.module('tutor').controller("Set1Ctrl", function($scope, $window, $mdDial
             $location.path("/home");
         };
 
+        //updates ranking
+        updateRanking();
 
     };
 });
