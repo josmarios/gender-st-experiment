@@ -1,6 +1,8 @@
 angular.module('tutor').controller("HomeCtrl", function($scope, $location, configService, User) {
     console.log("HomeCtrl ok");
 
+    $scope.badges = [];
+
     $scope.showNext = function() {
         return configService.getNext();
     };
@@ -35,8 +37,12 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, confi
         return "assets/" + configService.getTheme() + "/images/ranking.svg";
     };
 
-    $scope.getBadge = function() {
-        return "assets/" + configService.getTheme() + "/images/badge.svg";
+    $scope.checkBadge = function(id) {
+        return configService.getBadges()[id];
+    };
+
+    $scope.getBadge = function(id) {
+        return "assets/" + configService.getTheme() + "/images/" + id + ".png";
     };
 
     $scope.getAvatar = function() {

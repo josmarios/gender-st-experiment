@@ -6,8 +6,10 @@ tutorServices.service("configService", function() {
 
     var random = Math.floor((Math.random() * 10000)) % 3;
     var currentTheme = opts[random];
-    
+
     var next = false;
+
+    var badgeFlags = [false, false, false];
 
     this.setTheme = function(value) {
         console.log("setting theme: " + value);
@@ -20,11 +22,19 @@ tutorServices.service("configService", function() {
 
     this.setNext = function(value) {
         next = value;
-    }
+    };
 
     this.getNext = function() {
         return next;
-    }
+    };
+
+    this.addBadge = function(id) {
+        badgeFlags[id] = true;
+    };
+
+    this.getBadges = function() {
+        return badgeFlags;
+    };
 });
 
 tutorServices.service("User", function($http) {

@@ -4,23 +4,14 @@
     </md-toolbar>
     <md-toolbar></md-toolbar>
     <div layout="row" flex-offset="5">
-        <md-card layout="column" flex="15" class="card-over" layout-margin>
+        <md-card layout="column " ng-show="true " layout-align="center center">
             <md-card-title>
-                <h3>Ranking</h3>
+                <h3>Meus Trofeus</h3>
             </md-card-title>
-            <md-card-content>
-                <md-list>
-                    <md-list-item ng-repeat="a in ['Ana','Beto','Camila','Daniel','Eva']">
-                        <img ng-src="{{getRanking()}}" width="30px">
-                        <label>{{a}} ({{$index+1}})</label>
-                    </md-list-item>
-                    <md-list-item>
-                       
-                            <img ng-src="{{getRanking()}}"  width="30px">
-                       
-                        <label><b>Alex (6)</b></label>
-                    </md-list-item>
-                </md-list>
+            <md-card-content layout="row" layout-align="center center">
+                <img ng-src="{{getBadge('badge5')}}" width="100px" ng-show="{{checkBadge(0)}}">
+                <img ng-src="{{getBadge('badge10')}}" width="100px" ng-show="{{checkBadge(1)}}">
+                <img ng-src="{{getBadge('badge')}}" width="100px" ng-show="{{checkBadge(2)}}">
             </md-card-content>
         </md-card>
         <md-card flex="60 " class="card-over" layout="column ">
@@ -48,14 +39,6 @@
                     <img ng-src="{{getAvatar()}}" flex>
                     <p>Alex</p>
                     <h4>Pontos: {{getPoints()}}</h4>
-                </md-card-content>
-            </md-card>
-            <md-card layout="column " ng-show="true " layout-align="center center">
-                <md-card-title>
-                    <h3>Meus Trofeus</h3>
-                </md-card-title>
-                <md-card-content layout="row" layout-align="center center">
-                    <img ng-src="{{getBadge()}}" flex="50">
                 </md-card-content>
             </md-card>
         </div>
