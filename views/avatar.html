@@ -1,0 +1,19 @@
+<md-dialog flex="50" aria-label="Right answer" ng-controller="AvatarCtrl">
+    <md-dialog-content layout="column" layout-align="center center" layout-padding>
+        <h1>Escolha um Avatar</h1>
+        <div layout="row" layout-align="center center">
+            <md-card ng-click="setAvatar(getImage(1))" layout-align="center center">
+                <img ng-src="{{getImage(1)}}" flex="30">
+            </md-card>
+            <md-card ng-click="setAvatar(getImage(2))" layout-align="center center">
+                <img ng-src="{{getImage(2)}}" flex="30">
+            </md-card>
+            <md-card ng-click="setAvatar(getImage(3))" layout-align="center center">
+                <img ng-src="{{getImage(3)}}" flex="30">
+            </md-card>
+        </div>
+        <md-button class="md-raised" ng-click="close()">
+            OK
+        </md-button>
+        <md-dialog-content>
+</md-dialog>
