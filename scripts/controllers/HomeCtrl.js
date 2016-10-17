@@ -49,12 +49,13 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         return configService.getAvatar();
     };
 
-    $mdDialog.show({
-        controller: 'AvatarCtrl',
-        templateUrl: 'views/avatar.html',
-        parent: angular.element(document.body),
-        clickOutsideToClose: true,
-        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-    });
-
+    $scope.chooseAvatar = function() {
+        $mdDialog.show({
+            controller: 'AvatarCtrl',
+            templateUrl: 'views/avatar.html',
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        });
+    };
 });

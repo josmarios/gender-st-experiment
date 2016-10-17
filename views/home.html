@@ -1,20 +1,55 @@
-<div md-theme="{{dynamicTheme()}}">
-    <md-toolbar layout-align="center center">
-        <h1>Tutor</h1>
+<div md-theme="{{dynamicTheme()}}" layout="column">
+    <md-toolbar layout="row" layout-align="start center" layout-padding>
+        <i class="material-icons"> local_play </i>
+        <span>Tutor</span>
+        <div flex layout="row" layout-align="end center">
+            <label layout-margin layout-padding>Alex</label>
+            <!--  <i class="material-icons">person</i> -->
+            <img ng-src="{{getAvatar()}}" class="profile" width="50px">
+        </div>
     </md-toolbar>
-    <md-toolbar></md-toolbar>
-    <div layout="row" flex-offset="5">
-        <md-card layout="column " ng-show="true " layout-align="center center">
+    <div layout="row" layout-align="center start" layout-margin layout-padding>
+        <!--         <div layout="column " flex="15 " ng-show="getAvatar()">
+            <md-card layout="column " layout-align="center center ">
+                <md-card-content layout="column" layout-align="center center">
+                    <img ng-src="{{getAvatar()}}" flex>
+                    <p>Alex</p>
+                    <h4>Pontos: {{getPoints()}}</h4>
+                </md-card-content>
+            </md-card>
+        </div> -->
+        <md-card layout="column" layout-align="center center" flex="25" class="md-primary">
             <md-card-title>
-                <h3>Meus Trofeus</h3>
+                <label>Pontos</label>
             </md-card-title>
-            <md-card-content layout="row" layout-align="center center">
-                <img ng-src="{{getBadge('badge5')}}" width="100px" ng-show="{{checkBadge(0)}}">
-                <img ng-src="{{getBadge('badge10')}}" width="100px" ng-show="{{checkBadge(1)}}">
-                <img ng-src="{{getBadge('badge')}}" width="100px" ng-show="{{checkBadge(2)}}">
+            <md-card-content flex="80 " layout-align="center center ">
+                <h1 class="huge "> {{getPoints()}}</h1>
             </md-card-content>
+            <md-progress-linear flex="10 " md-mode="determinate " value="0 "> </md-progress-linear>
         </md-card>
-        <md-card flex="60 " class="card-over" layout="column ">
+        <md-card layout="column " layout-align="center center " flex="25 ">
+            <md-card-title " flex="10 ">
+                <label>Prêmios</label>
+            </md-card-title>
+            <md-card-content flex="80 " layout-align="center center ">
+                <h1 class="huge "> 0</h1>
+            </md-card-content>
+            <md-progress-linear flex="10 " md-mode="determinate " value="0 "> </md-progress-linear>
+        </md-card>
+        <md-card layout="column " layout-align="center center " flex="25 " ng-show="false ">
+            <md-card-title " flex="10 ">
+                <label>Meus Trofeus</label>
+            </md-card-title>
+            <md-card-content flex="80 " layout-align="center center ">
+                <img ng-src="{{getBadge( 'badge5')}} " width="100px " ng-show="{{checkBadge(0)}} ">
+                <img ng-src="{{getBadge( 'badge10')}} " width="100px " ng-show="{{checkBadge(1)}} ">
+                <img ng-src="{{getBadge( 'badge')}} " width="100px " ng-show="{{checkBadge(2)}} ">
+            </md-card-content>
+            <!-- <md-progress-linear flex="10 " md-mode="determinate " value="0 "> </md-progress-linear> -->
+        </md-card>
+    </div>
+    <div layout="row " layout-align="center center ">
+        <!--  <md-card flex="60 " layout="column ">
             <div layout="row " layout-align="center center ">
                 <h2> Tarefas</h2>
             </div>
@@ -31,16 +66,34 @@
                         <br> Vamos para a última etapa!</md-button>
                 </md-card>
             </div>
+        </md-card> -->
+        <md-card layout="column " layout-align="center center " flex="20 " class="md-button md-primary" ng-click="chooseAvatar()">
+            <md-card-title " flex="20 ">
+                <label layout-padding layout-margin>Atividade 1</label>
+            </md-card-title>
+            <md-card-content flex="80 " layout-align="center center ">
+                <i class="material-icons ">star</i>
+            </md-card-content>
         </md-card>
-        <!-- Right Panel  -->
-        <div layout="column " flex="15 " ng-show="getAvatar()" class="card-over ">
-            <md-card layout="column " layout-align="center center ">
-                <md-card-content layout="column" layout-align="center center">
-                    <img ng-src="{{getAvatar()}}" flex>
-                    <p>Alex</p>
-                    <h4>Pontos: {{getPoints()}}</h4>
-                </md-card-content>
-            </md-card>
-        </div>
+        <md-card layout="column " layout-align="center center " flex="20 " class="md-button md-primary " ng-click="showProblems() " ng-disabled="true ">
+            <md-card-title " flex="20 ">
+                <label layout-padding layout-margin>Atividade 2</label>
+            </md-card-title>
+            <md-card-content flex="80 " layout-align="center center ">
+                <i class="material-icons ">star</i>
+                <i class="material-icons ">star</i>
+            </md-card-content>
+        </md-card>
+        <md-card layout="column " layout-align="center center " flex="20 " class="md-button md-primary" ng-disabled="true">
+            <md-card-title " flex="20 ">
+                <label layout-padding layout-margin>Atividade 3</label>
+            </md-card-title>
+            <md-card-content flex="80 " layout-align="center center ">
+                <i class="material-icons ">star</i>
+                <i class="material-icons ">star</i>
+                <i class="material-icons ">star</i>
+            </md-card-content>
+        </md-card>
     </div>
+
 </div>

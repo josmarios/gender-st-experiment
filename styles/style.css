@@ -7,9 +7,20 @@ iframe {
     z-index: 2;
 }
 
+
 /*1-Neutral; 2-Female; 3-Male*/
+
 .bg {
     background-color: #eceff1;
     /*background-color: #f3e5f5; */
     /*background-color: #e3f2fd;*/
+}
+
+.huge {
+    font-size: 60pt
+}
+
+.profile {
+    background-color: white;
+    border-radius: 50px
 }
