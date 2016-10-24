@@ -1,10 +1,10 @@
 <div md-theme="{{dynamicTheme()}}" ng-controller="Set1Ctrl">
     <md-toolbar layout-align="center center">
-        <h2>Atividade 1</h2>
+        <h2>Atividade 2</h2>
     </md-toolbar>
-    <md-toolbar></md-toolbar>
+    
     <div layout="row">
-        <md-content layout="column" class="card-over" flex-offset="20" flex="60">
+        <md-content layout="column" flex-offset="20" flex="60">
             <h3 layout-margin>Questão {{getQuestion()}}/20</h3>
             <div layout="row">
                 <img src="{{question()}}" flex="50">
@@ -17,7 +17,7 @@
             </div>
             <md-progress-linear class="md-primary" md-mode="determinate" value="{{progress}}"></md-progress-linear>
         </md-content>
-        <md-card layout="column" flex="15" layout-margin>
+        <md-card layout="column" flex="15">
             <md-card-title>
                 <h3>Ranking</h3>
             </md-card-title>
