@@ -13,10 +13,6 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
         templateUrl: "views/posttest.html",
         controller: "PosttestCtrl"
     }).
-    when("/set1", {
-        templateUrl: "views/set1.html",
-        controller: "Set1Ctrl"
-    }).
     when("/finish", {
         templateUrl: "views/finish.html",
         controller: "FinishCtrl"

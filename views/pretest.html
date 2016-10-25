@@ -1,24 +1,31 @@
 <div>
-    <md-toolbar layout="column" layout-align="center center">
-        <h2>TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO</h2>
-    </md-toolbar>
     <div layout="row" layout-align="center center">
         <md-card layout="column" layout-align="center center" flex="50">
-            <md-card-content>
+            <md-toolbar layout="row" layout-align="center center" layout-padding>
+                <div layout="row" flex="15">
+                    <img src="assets/default/images/ufal.png">
+                </div>
+                <div layout="row" layout-align="center center">
+                    <label>Estudo sobre Ansiedade em Ambientes Educacionais Gamificados</label>
+                </div>
+                <div layout="row" flex="15" layout-align="end end">
+                    <img src="assets/default/images/ic.png">
+                </div>
+            </md-toolbar>
+            <md-card-content layout-padding layout-margin ng-show="!start">
+                <label><b>Termo de Consentimento Livre e Esclarecido</b></label>
                 <br>
                 <p> Você está sendo convidado(a) a participar, como voluntário(a), de um estudo sobre ansiedade em ambientes educacionais gamificados, conduzido pelo estudante Josmário Albuquerque do curso de graduação em Ciência da Computação do Instituto de Computação da Universidade Federal de Alagoas. </p>
                 <p> Este estudo tem por objetivo medir o quanto um ambiente de aprendizagem gamificado pode influenciar a ansiedade de seus usuários. </p>
                 <p> Você foi selecionado(a) de forma arbitrária e sua participação não é obrigatória. A qualquer momento, você poderá desistir de participar deste estudo. Sua recusa, desistência ou retirada de consentimento não acarretará prejuízo. </p>
                 <p>A princípio, este estudo não possui nenhum risco para seus participantes. No entanto, caso você sofra de algum transtorno de ansiedade, aconselha-se a não participar do mesmo. Além disso, em alguns momentos serão emitidos alguns sinais sonoros e, portanto, aconselha-se deixar o volume da saída de áudio em nível médio para evitar possíveis incidentes. </p>
                 <p>O participante deste estudo não será remunerado em hipótese alguma. Além disso, a participação no mesmo não implica em nenhum gasto para os participantes. No entanto, não nos responsabilizamos por quaisquer problemas técnicos que possam vir a ocorrer durante a execução desta pesquisa.</p>
-                <p> Sua participação nesta pesquisa consistirá em executar três atividades. Primeiro, será aplicado um questionário de ansiedade. Em seguida, você será direcionado(a) para uma outra página com um protótipo de um sistema tutor onde você responderá a perguntas básicas de raciocínio. Finalmente, você será direcionado(a) para a última página onde, novamente, responderá ao questionário de ansiedade. </p>
+                <p> Sua participação nesta pesquisa consistirá em executar três atividades. Primeiro, será aplicado um questionário de ansiedade. Em seguida, você será direcionado(a) para uma outra página com o protótipo de um sistema tutor onde você responderá a perguntas básicas de raciocínio. Finalmente, você será direcionado(a) para a última página onde, novamente, responderá ao questionário de ansiedade. </p>
                 <p>Durante a execução, somente suas respostas serão coletadas. Todo o processo tem duração média de aproximadamente 15 minutos. Os dados obtidos por meio desta pesquisa serão confidenciais e não serão divulgados em nível individual, visando assegurar o sigilo de sua participação. O pesquisador responsável se comprometeu a tornar públicos nos meios acadêmicos e científicos os resultados obtidos de forma consolidada sem qualquer identificação de indivíduos participantes. </p>
-                <p>A qualquer momento você poderá contactar o estudante responsável através do endereço eletrônico jas@ic.ufal.br, onde você poderá tirar suas dúvidas sobre o projeto e sua participação nele.</p>
-                <p> Caso você concorde em participar desta pesquisa, basta marcar o campo abaixo. </p>
-            </md-card-content>
-            <md-card-actions>
+                <p>A qualquer momento você poderá contactar o estudante responsável através do endereço eletrônico jas@ic.ufal.br, onde você poderá tirar suas dúvidas sobre o projeto e sobre sua participação nele.</p>
+                <p> Caso você concorde em participar desta pesquisa, basta marcar o campo abaixo para prosseguir.</p>
                 <md-checkbox ng-click="start=true"><b>Declaro que entendi os objetivos, riscos e benefícios de minha participação na pesquisa, e que concordo em participar.</b></md-checkbox>
-            </md-card-actions>
+            </md-card-content>
         </md-card>
     </div>
     <div layout="row" layout-align="center center" ng-show="start" class="bg">
