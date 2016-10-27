@@ -7,68 +7,10 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     var totalPoints = 0;
     var currentQuestion = 0;
     var showSet1 = true;
+    var level = 0;
 
-
-    $scope.badges = [];
-    $scope.items = ['A', 'B', 'C', 'D', 'E'];
-    $scope.progress = 0;
-
-
-    $scope.checkSet1 = function() {
-        return showSet1;
-    };
-
-    $scope.setSet1 = function(value) {
-        showSet1 = value;
-    };
-
-    $scope.showNext = function() {
-        return configService.getNext();
-    };
-
-    $scope.showPosttest = function() {
-        $location.path("/posttest");
-    };
-
-    $scope.getStars = function() {
-
-        if (configService.nextOn) {
-            return "star";
-        }
-
-        return "star_border";
-    };
-
-    $scope.getRanking = function() {
-        return "assets/" + configService.getTheme() + "/images/ranking.svg";
-    };
-
-    $scope.checkBadge = function(id) {
-        return configService.getBadges()[id];
-    };
-
-    $scope.getBadge = function(id) {
-        return "assets/" + configService.getTheme() + "/images/" + id + ".png";
-    };
-
-    $scope.getAvatar = function() {
-        return configService.getAvatar();
-    };
-
-    $scope.chooseAvatar = function() {
-        $mdDialog.show({
-            controller: 'AvatarCtrl',
-            templateUrl: 'views/avatar.html',
-            parent: angular.element(document.body),
-            clickOutsideToClose: true,
-            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-        });
-    };
-
-    $scope.getPoints = function() {
-        console.log("getPoints called");
-        return totalPoints;
-    };
+    var inc = false;
+    var dec = false;
 
     var updateRanking = function() {
 
@@ -104,6 +46,101 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         $scope.users = sortedList.reverse();
     };
 
+    var updatePoints = function(value) {
+        if (value < 0 && (totalPoints + value) >= 0) {
+
+            totalPoints += value;
+            // dec = true;
+            $scope.decrement = true;
+            new Audio('assets/default/audio/wrong.mp3').play();
+        };
+
+        if (value > 0) {
+            console.log("right answer");
+            totalPoints += value;
+            level++;
+            // inc = true;
+            $scope.increment = true;
+            new Audio('assets/default/audio/right.mp3').play();
+        };
+
+        setTimeout(function() {
+            $scope.$apply(function() {
+                $scope.decrement = false;
+                $scope.increment = false;
+            });
+        }, 1000);
+    };
+
+    $scope.increment = false;
+    $scope.decrement = false;
+    $scope.badges = [];
+    $scope.items = ['A', 'B', 'C', 'D', 'E'];
+    $scope.progress = 0;
+
+    $scope.checkSet1 = function() {
+        return showSet1;
+    };
+
+    $scope.setSet1 = function(value) {
+        showSet1 = value;
+    };
+
+    $scope.showNext = function() {
+        return configService.getNext();
+    };
+
+    $scope.showPosttest = function() {
+        $location.path("/posttest");
+    };
+
+    $scope.getStars = function() {
+
+        if (configService.nextOn) {
+            return "star";
+        }
+
+        return "star_border";
+    };
+
+    $scope.getRanking = function() {
+        return "assets/" + configService.getTheme() + "/images/ranking.svg";
+    };
+
+    $scope.checkBadge = function(id) {
+        var result = configService.getBadges()[id];
+        console.log("checking badge " + id + ": " + result);
+        return result;
+    };
+
+    $scope.getBadge = function(id) {
+        return "assets/" + configService.getTheme() + "/images/" + id + ".png";
+    };
+
+    $scope.getAvatar = function() {
+        return configService.getAvatar();
+    };
+
+    $scope.getLevel = function() {
+        return level;
+    };
+
+    $scope.chooseAvatar = function() {
+        $mdDialog.show({
+            controller: 'AvatarCtrl',
+            templateUrl: 'views/avatar.html',
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        });
+    };
+
+    $scope.getPoints = function() {
+        console.log("getPoints called");
+        return totalPoints;
+    };
+
+
     //updates ranking
     updateRanking();
 
@@ -133,8 +170,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         //right answer
         if (userAnswer == answers[currentQuestion]) {
 
-            //increases user's points
-            totalPoints += 5;
+            updatePoints(5);
 
             //badge level 5
             if (totalPoints == 25) {
@@ -149,6 +185,11 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 configService.addBadge(0);
 
+                setTimeout(function() {
+                    $mdDialog.hide();
+                }, 2000);
+
+
             } else if (totalPoints == 50) {
                 $mdDialog.show({
                     controller: 'Badge10Ctrl',
@@ -160,6 +201,11 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 configService.addBadge(1);
 
+                setTimeout(function() {
+                    $mdDialog.hide();
+                }, 2000);
+
+
             } else if (currentQuestion == 19) {
                 $mdDialog.show({
                     controller: 'BadgeCtrl',
@@ -170,20 +216,23 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                 });
 
                 configService.addBadge(2);
-            } else {
-                //show dialog
-                $mdDialog.show({
-                    controller: 'RightCtrl',
-                    templateUrl: 'views/right.html',
-                    parent: angular.element(document.body),
-                    clickOutsideToClose: true,
-                    fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                });
-            };
 
-            setTimeout(function() {
-                $mdDialog.hide();
-            }, 2000);
+                setTimeout(function() {
+                    $mdDialog.hide();
+                }, 2000);
+            };
+            // else {
+            //     //show dialog (right answer)
+            //     $mdDialog.show({
+            //         controller: 'RightCtrl',
+            //         templateUrl: 'views/right.html',
+            //         parent: angular.element(document.body),
+            //         clickOutsideToClose: true,
+            //         fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+            //     });
+            // };
+
+
 
         } else if (currentQuestion == 19) {
             $mdDialog.show({
@@ -193,21 +242,27 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                 clickOutsideToClose: true,
                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
             });
-        } else {
 
-            //show dialog
-            $mdDialog.show({
-                controller: 'WrongCtrl',
-                templateUrl: 'views/wrong.html',
-                parent: angular.element(document.body),
-                clickOutsideToClose: true,
-                backgroundColor: 'transparent',
-                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-            });
-
+            showSet1 = false;
             setTimeout(function() {
                 $mdDialog.hide();
-            }, 2000);
+            }, 1500);
+        } else {
+
+            updatePoints(-5);
+            //show dialog
+            // $mdDialog.show({
+            //     controller: 'WrongCtrl',
+            //     templateUrl: 'views/wrong.html',
+            //     parent: angular.element(document.body),
+            //     clickOutsideToClose: true,
+            //     backgroundColor: 'transparent',
+            //     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+            // });
+
+            // setTimeout(function() {
+            //     $mdDialog.hide();
+            // }, 2000);
         };
 
         // $mdDialog.show(dialogType);
@@ -219,11 +274,11 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         };
 
         if (currentQuestion >= 20) {
-
-            configService.setNext(true);
+            //  configService.setNext(true);
             User.setActivityPoints(totalPoints);
             console.log(User.getResponse());
-            $location.path("/home");
+            //  $location.path("/home");
+            showSet1 = false;
         };
 
         //updates ranking

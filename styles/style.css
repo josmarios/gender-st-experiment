@@ -24,3 +24,11 @@ iframe {
     background-color: white;
     border-radius: 50px
 }
+
+.success{
+	color: green;
+}
+
+.fail{
+	color: red;
+}

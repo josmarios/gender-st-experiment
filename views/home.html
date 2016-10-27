@@ -12,9 +12,15 @@
         <div layout="column" layout-margin layout-padding flex="20">
             <div layout="column" layout-align="center center" class="md-primary">
                 <label>Pontos</label>
-                <md-content layout="row" layout-align="center center">
+                <div layout="row" layout-align="center center">
                     <h1 class="huge"> {{getPoints()}}</h1>
-                </md-content>
+                </div>
+                <div ng-if="increment">
+                    <h1 class="success" layout-margin>+5</h1>
+                </div>
+                <div ng-if="decrement">
+                    <h1 class="fail" layout-margin>-5</h1>
+                </div>
                 <md-progress-linear flex="10" md-mode="determinate" value="0"> </md-progress-linear>
             </div>
             <div layout="column" layout-align="center center">
@@ -32,18 +38,17 @@
             </div>
         </div>
         <div layout="column" flex="55" layout-margin layout-padding>
-            <md-card layout="column" layout-align="center left" class="md-primary" layout-padding>
+            <md-card layout="column" layout-align="center left" class="md-primary" layout-padding ng-if="checkSet1()">
                 <h3>Olá!</h3>
-                <label layout-padding layout-margin>Respondas as questões abaixo para ganhar pontos, trofeus, avançar de nível e atingir uma melhor posição no ranking!
-                    <br> A qualquer momento você pode clicar abaixo para escolher um avatar:
+                <label layout-padding layout-margin>Respondas as questões abaixo para ganhar pontos, trofeus, avançar de nível e atingir uma melhor posição no ranking! A qualquer momento você pode clicar abaixo para escolher um avatar:
                 </label>
                 <br>
                 <md-button ng-click="chooseAvatar()" flex="50">Escolher Avatar</md-button>
             </md-card>
-            <div layout="row " layout-align="center center " flex>
+            <div layout="row " layout-align="center center " flex ng-if="checkSet1()">
                 <div flex>
                     <div layout-align="center center " ng-show="checkSet1()">
-                        <md-content layout="column " flex>
+                        <md-content layout="column ">
                             <h3 layout-margin>Questão {{getQuestion()}}/20</h3>
                             <div layout="row ">
                                 <img src="{{question()}} " flex="50 ">
@@ -55,18 +60,25 @@
                                 </md-list>
                             </div>
                             <md-progress-linear class="md-primary " md-mode="determinate " value="{{progress}} "></md-progress-linear>
+                            <label>Nível: {{getLevel()}}</label>
                         </md-content>
                     </div>
                 </div>
             </div>
+            <div ng-if="!checkSet1()" layout="row" layout-align="center center" class="md-primary md-raised">
+                <md-card layout="column" layout-align="center left" class="md-primary" layout-padding>
+                    <h3>Etapa finalizada!</h3>
+                    <md-button ng-click="showPosttest()" flex="50">Continuar</md-button>
+                </md-card>
+            </div>
         </div>
-        <div layout="column " layout-align="center center " layout-margin layout-padding flex="20 ">
-            <label>Meus Trofeus</label>
-            <md-content layout="column" flex="60 " layout-align="center center ">
-                <img ng-src="{{getBadge('badge5')}} " width="100px " ng-show="{{checkBadge(0)}} ">
-                <img ng-src="{{getBadge('badge10')}} " width="100px " ng-show="{{checkBadge(1)}} ">
-                <img ng-src="{{getBadge('badge')}} " width="100px " ng-show="{{checkBadge(2)}} ">
-            </md-content>
+        <div layout="column " layout-align="center center " layout-margin layout-padding flex="20" ng-show="checkBadge(0) || checkBadge(1) || checkBadge(2)">
+            <h3>Meus Trofeus</h3>
+            <div layout=" column " flex="60 " layout-align="center center ">
+                <img ng-src="{{getBadge( 'badge5')}}" width="100px" ng-show="checkBadge(0)">
+                <img ng-src="{{getBadge( 'badge10')}} " width="100px" ng-show="checkBadge(1)">
+                <img ng-src="{{getBadge( 'badge')}}" width="100px" ng-show="checkBadge(2)">
+            </div>
         </div>
     </div>
     <!-- <md-card layout="column " layout-align="center center " flex="25 " ng-show="{{checkBadge(0) || checkBadge(1) || checkBadge(2)}} "> -->
