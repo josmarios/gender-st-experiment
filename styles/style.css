@@ -17,7 +17,7 @@ iframe {
 }
 
 .huge {
-    font-size: 60pt
+    font-size: 20pt
 }
 
 .profile {
@@ -25,10 +25,26 @@ iframe {
     border-radius: 50px
 }
 
-.success{
-	color: green;
+.success {
+    color: green;
 }
 
-.fail{
-	color: red;
+.fail {
+    color: red;
+}
+
+.small {
+    font-size: 12pt;
+}
+
+.rounded {
+    border-radius: 8px;
+}
+
+.list-item {
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #f3e5f5;
 }

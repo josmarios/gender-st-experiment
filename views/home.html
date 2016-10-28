@@ -1,40 +1,54 @@
 <div md-theme="{{dynamicTheme()}}" layout="column">
     <md-toolbar layout="row" layout-align="start center" layout-padding>
         <i class="material-icons"> local_play </i>
-        <span>Tutor</span>
+        <span>Etapa II - Tutor</span>
         <div flex layout="row" layout-align="end center">
             <label layout-margin layout-padding>Alex</label>
             <!--  <i class="material-icons">person</i> -->
             <img ng-src="{{getAvatar()}}" class="profile" width="50px">
         </div>
     </md-toolbar>
-    <div layout="row" layout-align="center left">
-        <div layout="column" layout-margin layout-padding flex="20">
-            <div layout="column" layout-align="center center" class="md-primary">
-                <label>Pontos</label>
-                <div layout="row" layout-align="center center">
-                    <h1 class="huge"> {{getPoints()}}</h1>
-                </div>
-                <div ng-if="increment">
-                    <h1 class="success" layout-margin>+5</h1>
-                </div>
-                <div ng-if="decrement">
-                    <h1 class="fail" layout-margin>-5</h1>
-                </div>
-                <md-progress-linear flex="10" md-mode="determinate" value="0"> </md-progress-linear>
-            </div>
+    <div layout="row" layout-align="left center">
+        <div layout="column" layout-margin flex="30">
             <div layout="column" layout-align="center center">
-                <md-card-title>
-                    <h3>Ranking</h3>
-                </md-card-title>
-                <md-card-content>
-                    <md-list>
-                        <md-list-item ng-repeat="a in users">
-                            <img ng-src="{{getRanking()}}" width="30px">
-                            <label>{{$index+1}}-{{a.name}} ({{a.points}})</label>
+                <md-content>
+                    <md-list layout-padding>
+                        <h3>Ranking</h3>
+                        <md-list-item ng-repeat="a in users" layout-align="left center" layout-margin class="list-item">
+                            <div flex="40" layout="row" layout-align="left center">
+                                <label class="small" layout-padding>{{$index+1}}.</label>
+                                <img class="rounded" flex="30" ng-src="{{a.avatar}}">
+                                <label flex="50" class="small" layout-padding>{{a.name}}</label>
+                            </div>
+                            <div width="100px" layout="row" layout-align="left center">
+                                <img ng-src="{{getBar()}}" ng-repeat="z in getNumber(a.points) track by $index">
+                                <label class="small" layout-margin>{{getUserPoints($index)}}</label>
+                            </div>
                         </md-list-item>
                     </md-list>
-                </md-card-content>
+                </md-content>
+            </div>
+            <div layout="row" layout-align="space-between center" class="md-primary" flex="15">
+                <md-content layout-padding flex="40">
+                    <h3>Pontos</h3>
+                    <div layout="row" layout-align="center center">
+                        <h1 class="huge"> {{getPoints()}}</h1>
+                    </div>
+                    <div ng-if="increment">
+                        <h1 class="success" layout-margin>+5</h1>
+                    </div>
+                    <div ng-if="decrement">
+                        <h1 class="fail" layout-margin>-5</h1>
+                    </div>
+                    <md-progress-linear flex="10" md-mode="determinate" value="0"> </md-progress-linear>
+                </md-content>
+                <md-content layout-padding flex="40">
+                    <h3>Nível</h3>
+                    <div layout="row" layout-align="center center">
+                        <h1 class="huge"> {{getLevel()}}</h1>
+                    </div>
+                    <md-progress-linear flex="10" md-mode="determinate" value="0"> </md-progress-linear>
+                </md-content>
             </div>
         </div>
         <div layout="column" flex="55" layout-margin layout-padding>
@@ -47,9 +61,10 @@
             </md-card>
             <div layout="row " layout-align="center center " flex ng-if="checkSet1()">
                 <div flex>
-                    <div layout-align="center center " ng-show="checkSet1()">
-                        <md-content layout="column ">
+                    <div layout-align="center center " ng-show="checkSet1()" layout-padding>
+                        <md-content layout="column">
                             <h3 layout-margin>Questão {{getQuestion()}}/20</h3>
+                            <md-progress-linear class="md-primary " md-mode="determinate " value="{{progress}} "></md-progress-linear>
                             <div layout="row ">
                                 <img src="{{question()}} " flex="50 ">
                                 <md-list layout="column " flex="20 " flex-offset="5 ">
@@ -59,8 +74,6 @@
                                     </md-button>
                                 </md-list>
                             </div>
-                            <md-progress-linear class="md-primary " md-mode="determinate " value="{{progress}} "></md-progress-linear>
-                            <label>Nível: {{getLevel()}}</label>
                         </md-content>
                     </div>
                 </div>

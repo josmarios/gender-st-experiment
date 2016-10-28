@@ -5,6 +5,8 @@ angular.module('tutor').controller("AvatarCtrl", function($scope, $mdDialog, con
 
     $scope.setAvatar = function(value) {
         configService.setAvatar(value);
+        console.log("Just setted: ----------"+ value);
+          console.log("New: ----------"+ JSON.stringify(configService.getUsers()));
     };
 
     $scope.close = function() {

@@ -7,76 +7,58 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     var totalPoints = 0;
     var currentQuestion = 0;
     var showSet1 = true;
+    var totalPoints = 0;
+    var userAvatar = "assets/" + configService.getTheme() + "/images/avatar1.png";
     var level = 0;
 
     var inc = false;
     var dec = false;
 
-    var updateRanking = function() {
-
-        $scope.users = [{
-            name: "Alan",
-            points: 78
-        }, {
-            name: "Valentine",
-            points: 75
-        }, {
-            name: "Francis",
-            points: 63
-        }, {
-            name: "Danni",
-            points: 40
-        }, {
-            name: "Muriel",
-            points: 31
-        }, {
-            name: "Rosemar",
-            points: 15
-        }, {
-            name: "Alex",
-            points: totalPoints
-        }];
-
-        //sorts users
-        var sortedList = $scope.users.slice(0);
-        sortedList.sort(function(a, b) {
-            return a.points - b.points;
-        });
-
-        $scope.users = sortedList.reverse();
-    };
-
-    var updatePoints = function(value) {
-        if (value < 0 && (totalPoints + value) >= 0) {
-
-            totalPoints += value;
-            // dec = true;
-            $scope.decrement = true;
-            new Audio('assets/default/audio/wrong.mp3').play();
-        };
-
-        if (value > 0) {
-            console.log("right answer");
-            totalPoints += value;
-            level++;
-            // inc = true;
-            $scope.increment = true;
-            new Audio('assets/default/audio/right.mp3').play();
-        };
-
-        setTimeout(function() {
-            $scope.$apply(function() {
-                $scope.decrement = false;
-                $scope.increment = false;
-            });
-        }, 1000);
-    };
-
-    $scope.increment = false;
-    $scope.decrement = false;
     $scope.badges = [];
     $scope.items = ['A', 'B', 'C', 'D', 'E'];
     $scope.progress = 0;
+
+    $scope.number = 6;
+
+    $scope.increment = false;
+    $scope.decrement = false;
+
+    $scope.users = [{
+        name: "Alan",
+        points: 79,
+        avatar: "assets/" + configService.getTheme() + "/images/ranking1.png"
+    }, {
+        name: "Valentine",
+        points: 75,
+        avatar: "assets/" + configService.getTheme() + "/images/ranking2.png"
+    }, {
+        name: "Francis",
+        points: 63,
+        avatar: "assets/" + configService.getTheme() + "/images/ranking3.png"
+    }, {
+        name: "Danni",
+        points: 27,
+        avatar: "assets/" + configService.getTheme() + "/images/ranking4.png"
+    }, {
+        name: "Alex",
+        points: totalPoints,
+        avatar: userAvatar
+    }];
+
+    $scope.getNumber = function(num) {
+        var array = new Array(num);
+        console.log(num);
+        for (var i = 0; i < num; i++) {
+            array.push(i);
+        };
+
+        return array;
+    };
+
+    $scope.getBar = function() {
+        return "assets/" + configService.getTheme() + "/images/bar.png";
+
+    };
 
     $scope.checkSet1 = function() {
         return showSet1;
@@ -103,13 +85,14 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         return "star_border";
     };
 
-    $scope.getRanking = function() {
-        return "assets/" + configService.getTheme() + "/images/ranking.svg";
+    $scope.getRanking = function(value) {
+        // var source = "assets/" + configService.getTheme() + "/images/ranking" + (value + 1) + ".png";
+        return $scope.users[value].avatar;
+
     };
 
     $scope.checkBadge = function(id) {
         var result = configService.getBadges()[id];
-        console.log("checking badge " + id + ": " + result);
         return result;
     };
 
@@ -118,7 +101,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     };
 
     $scope.getAvatar = function() {
-        return configService.getAvatar();
+        return userAvatar;
     };
 
     $scope.getLevel = function() {
@@ -136,13 +119,10 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     };
 
     $scope.getPoints = function() {
-        console.log("getPoints called");
+
         return totalPoints;
     };
 
-
-    //updates ranking
-    updateRanking();
 
     $scope.question = function() {
         return "assets/" + configService.getTheme() + "/images/q-0.png";
@@ -161,6 +141,49 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
     $scope.getQuestion = function() {
         return currentQuestion + 1;
+    };
+
+    $scope.getUserName = function(index) {
+        return $scope.users[index].name;
+    };
+
+    $scope.getUserPoints = function(index) {
+        
+        return $scope.users[index].points;
+    };
+
+    var updatePoints = function(value) {
+
+        if (value < 0 && (totalPoints + value) >= 0) {
+
+            // dec = true;
+            decrement = true;
+            new Audio('assets/default/audio/wrong.mp3').play();
+        };
+
+        if (value > 0) {
+            console.log("right answer");
+            level++;
+            // inc = true;
+            increment = true;
+            new Audio('assets/default/audio/right.mp3').play();
+        };
+
+        totalPoints += value;
+
+        //updates ranking
+        var sortedList = $scope.users.slice(0);
+        sortedList.sort(function(a, b) {
+            return a.points - b.points;
+        });
+
+        $scope.users = sortedList.reverse();
+
+        setTimeout(function() {
+            decrement = false;
+            increment = false;
+        }, 1000);
+
     };
 
     $scope.processAnswer = function(value) {
@@ -221,16 +244,6 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                     $mdDialog.hide();
                 }, 2000);
             };
-            // else {
-            //     //show dialog (right answer)
-            //     $mdDialog.show({
-            //         controller: 'RightCtrl',
-            //         templateUrl: 'views/right.html',
-            //         parent: angular.element(document.body),
-            //         clickOutsideToClose: true,
-            //         fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-            //     });
-            // };
 
 
 
@@ -249,23 +262,10 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
             }, 1500);
         } else {
 
-            updatePoints(-5);
-            //show dialog
-            // $mdDialog.show({
-            //     controller: 'WrongCtrl',
-            //     templateUrl: 'views/wrong.html',
-            //     parent: angular.element(document.body),
-            //     clickOutsideToClose: true,
-            //     backgroundColor: 'transparent',
-            //     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-            // });
+            updatePoints(-5)
 
-            // setTimeout(function() {
-            //     $mdDialog.hide();
-            // }, 2000);
         };
 
-        // $mdDialog.show(dialogType);
 
         currentQuestion++;
         $scope.progress = 100 * (currentQuestion + 1) / 20;
@@ -280,9 +280,6 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
             //  $location.path("/home");
             showSet1 = false;
         };
-
-        //updates ranking
-        updateRanking();
 
     };
 });

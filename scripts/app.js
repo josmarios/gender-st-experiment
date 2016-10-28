@@ -37,7 +37,7 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
         .accentPalette("blue")
         .warnPalette("blue");
 
-    // ST-M 
+    // ST-F 
     $mdThemingProvider.theme("stFemale")
         .primaryPalette("purple")
         .accentPalette("purple")

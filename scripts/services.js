@@ -12,8 +12,6 @@ tutorServices.service("configService", function() {
 
     var badgeFlags = [false, false, false];
 
-    var avatar = null;
-
     this.setTheme = function(value) {
         console.log("setting theme: " + value);
         currentTheme = value;
@@ -39,13 +37,7 @@ tutorServices.service("configService", function() {
         return badgeFlags;
     };
 
-    this.setAvatar = function(value) {
-        avatar = value;
-    };
 
-    this.getAvatar = function() {
-        return avatar;
-    };
 });
 
 tutorServices.service("User", function($http) {
