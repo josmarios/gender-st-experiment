@@ -28,7 +28,6 @@
                     <div layout="row" layout-align="center center">
                         <h1 class="huge"> {{getLevel()}}</h1>
                     </div>
-                    <!-- <md-progress-linear flex="10" md-mode="determinate" value="0"> </md-progress-linear> -->
                 </md-card>
             </div>
             <md-content>
@@ -54,15 +53,15 @@
                     <h3>1 - Personalize!  </h3>
                 </div>
                 <label layout-padding layout-margin> Escolha um avatar: </label>
-                <div layout="row" layout-align="center center">
+                <div layout="row" layout-align="center center" flex="60">
                     <md-card ng-click="setAvatar(getImage(1))" layout-align="center center" layout-margin>
-                        <img ng-src="{{getImage(1)}}" flex="30" class="rounded">
+                        <img ng-src="{{getImage(1)}}" flex="85" class="rounded">
                     </md-card>
                     <md-card ng-click="setAvatar(getImage(2))" layout-align="center center" layout-margin>
-                        <img ng-src="{{getImage(2)}}" flex="30" class="rounded">
+                        <img ng-src="{{getImage(2)}}" flex="85" class="rounded">
                     </md-card>
                     <md-card ng-click="setAvatar(getImage(3))" layout-align="center center" layout-margin>
-                        <img ng-src="{{getImage(3)}}" flex="30" class="rounded">
+                        <img ng-src="{{getImage(3)}}" flex="85" class="rounded">
                     </md-card>
                 </div>
                 <div layout="column" layout-align="center center" layout-margin layout-padding>
@@ -95,14 +94,13 @@
                 </md-card>
             </div>
         </div>
-        <md-card layout="column" layout-margin layout-padding layout-align="left center" flex="20">
+        <md-card layout="column" layout-margin layout-padding layout-align="left center" flex="15">
             <div>
-                <h3>Meus Trofeus</h3>
+                <h3>Meus Troféus</h3>
                 <div>
                     <div layout="column">
                         <div layout="row" layout-align="center center" layout-margin>
                             <img ng-src="{{getBadge('badge5')}}" flex="50">
-
                         </div>
                         <div layout="row" layout-align="center center" layout-margin>
                             <img ng-src="{{getBadge('badge10')}} " flex="50">

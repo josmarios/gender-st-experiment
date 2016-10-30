@@ -233,9 +233,6 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                 flagMessage = false;
             });
         }, 2000);
-
-
-
     };
 
     var updatePoints = function(value) {
@@ -283,9 +280,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
             return a.points - b.points;
         });
 
-        console.log("before reverse: " + JSON.stringify(users));
         users = sortedList.reverse();
-        console.log("After reverse: " + JSON.stringify(users));
 
         setTimeout(function() {
             $scope.decrement = false;
