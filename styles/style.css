@@ -2,6 +2,10 @@ iframe {
     border: none;
 }
 
+/*.header {
+    background-image: url("../assets/stFemale/images/education.jpg");
+}
+*/
 .card-over {
     margin-top: -40px;
     z-index: 2;
@@ -47,4 +51,12 @@ iframe {
     border-left: none;
     border-right: none;
     border-bottom-color: #f3e5f5;
+}
+
+.show-hide {
+    transition: all linear 0.5s;
+}
+
+.text-light {
+    color: white;
 }

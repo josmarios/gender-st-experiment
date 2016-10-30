@@ -4,32 +4,13 @@
         <span>Etapa II - Tutor</span>
         <div flex layout="row" layout-align="end center">
             <label layout-margin layout-padding>Alex</label>
-            <!--  <i class="material-icons">person</i> -->
             <img ng-src="{{getAvatar()}}" class="profile" width="50px">
         </div>
     </md-toolbar>
-    <div layout="row" layout-align="left center">
+    <div layout="row" layout-align="left left">
         <div layout="column" layout-margin flex="30">
-            <div layout="column" layout-align="center center">
-                <md-content>
-                    <md-list layout-padding>
-                        <h3>Ranking</h3>
-                        <md-list-item ng-repeat="a in users" layout-align="left center" layout-margin class="list-item">
-                            <div flex="40" layout="row" layout-align="left center">
-                                <label class="small" layout-padding>{{$index+1}}.</label>
-                                <img class="rounded" flex="30" ng-src="{{a.avatar}}">
-                                <label flex="50" class="small" layout-padding>{{a.name}}</label>
-                            </div>
-                            <div width="100px" layout="row" layout-align="left center">
-                                <img ng-src="{{getBar()}}" ng-repeat="z in getNumber(a.points) track by $index">
-                                <label class="small" layout-margin>{{getUserPoints($index)}}</label>
-                            </div>
-                        </md-list-item>
-                    </md-list>
-                </md-content>
-            </div>
-            <div layout="row" layout-align="space-between center" class="md-primary" flex="15">
-                <md-content layout-padding flex="40">
+            <div layout="row" layout-align="space-between center" class="md-primary" flex="25">
+                <md-card layout-padding flex="40">
                     <h3>Pontos</h3>
                     <div layout="row" layout-align="center center">
                         <h1 class="huge"> {{getPoints()}}</h1>
@@ -40,60 +21,96 @@
                     <div ng-if="decrement">
                         <h1 class="fail" layout-margin>-5</h1>
                     </div>
-                    <md-progress-linear flex="10" md-mode="determinate" value="0"> </md-progress-linear>
-                </md-content>
-                <md-content layout-padding flex="40">
-                    <h3>Nível</h3>
+                    <!-- <md-progress-linear flex="10" md-mode="determinate" value="0"> </md-progress-linear> -->
+                </md-card>
+                <md-card layout-padding flex="40">
+                    <h3>Acertos</h3>
                     <div layout="row" layout-align="center center">
                         <h1 class="huge"> {{getLevel()}}</h1>
                     </div>
-                    <md-progress-linear flex="10" md-mode="determinate" value="0"> </md-progress-linear>
-                </md-content>
+                    <!-- <md-progress-linear flex="10" md-mode="determinate" value="0"> </md-progress-linear> -->
+                </md-card>
             </div>
+            <md-content>
+                <md-list layout-padding>
+                    <h3>Ranking</h3>
+                    <md-list-item ng-repeat="a in getUsers()" layout-align="left center" layout-margin class="list-item" style="background-color: {{getUserColor(a.name)}}">
+                        <div flex="40" layout="row" layout-align="left center">
+                            <label class="small" layout-padding>{{$index+1}}.</label>
+                            <img class="rounded" flex="30" ng-src="{{a.avatar}}">
+                            <label flex="50" class="small" layout-padding>{{a.name}}</label>
+                        </div>
+                        <div width="100px" layout="row" layout-align="left center">
+                            <img ng-src="{{getBar()}}" ng-repeat="z in getNumber(a.points) track by $index">
+                            <label class="small" layout-margin>{{getUserPoints($index)}}</label>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
         </div>
-        <div layout="column" flex="55" layout-margin layout-padding>
-            <md-card layout="column" layout-align="center left" class="md-primary" layout-padding ng-if="checkSet1()">
-                <h3>Olá!</h3>
-                <label layout-padding layout-margin>Respondas as questões abaixo para ganhar pontos, trofeus, avançar de nível e atingir uma melhor posição no ranking! A qualquer momento você pode clicar abaixo para escolher um avatar:
-                </label>
-                <br>
-                <md-button ng-click="chooseAvatar()" flex="50">Escolher Avatar</md-button>
-            </md-card>
-            <div layout="row " layout-align="center center " flex ng-if="checkSet1()">
-                <div flex>
-                    <div layout-align="center center " ng-show="checkSet1()" layout-padding>
-                        <md-content layout="column">
-                            <h3 layout-margin>Questão {{getQuestion()}}/20</h3>
-                            <md-progress-linear class="md-primary " md-mode="determinate " value="{{progress}} "></md-progress-linear>
-                            <div layout="row ">
-                                <img src="{{question()}} " flex="50 ">
-                                <md-list layout="column " flex="20 " flex-offset="5 ">
-                                    <h3>Resposta: </h3>
-                                    <md-button class="md-accent md-hue-3 " flex ng-repeat="item in items " ng-click="processAnswer($index) ">
-                                        <h3>Letra {{item}}</h3>
-                                    </md-button>
-                                </md-list>
-                            </div>
-                        </md-content>
-                    </div>
+        <div layout="column" flex="50" layout-margin layout-padding>
+            <md-card layout="column" layout-align="center left" layout-padding ng-show="showAvatar">
+                <div>
+                    <h3>1 - Personalize!  </h3>
                 </div>
-            </div>
+                <label layout-padding layout-margin> Escolha um avatar: </label>
+                <div layout="row" layout-align="center center">
+                    <md-card ng-click="setAvatar(getImage(1))" layout-align="center center" layout-margin>
+                        <img ng-src="{{getImage(1)}}" flex="30" class="rounded">
+                    </md-card>
+                    <md-card ng-click="setAvatar(getImage(2))" layout-align="center center" layout-margin>
+                        <img ng-src="{{getImage(2)}}" flex="30" class="rounded">
+                    </md-card>
+                    <md-card ng-click="setAvatar(getImage(3))" layout-align="center center" layout-margin>
+                        <img ng-src="{{getImage(3)}}" flex="30" class="rounded">
+                    </md-card>
+                </div>
+                <div layout="column" layout-align="center center" layout-margin layout-padding>
+                    <md-button ng-click="hideAvatar()" class="md-primary md-raised">Pronto! Continuar.</md-button>
+                </div>
+            </md-card>
+            <md-card layout="column" layout-align="center left " layout-padding ng-show="showQuestions">
+                <h3>2 - Responda!</h3>
+                <label layout-padding layout-margin>Responda as questões abaixo para ganhar pontos, trofeus e atingir uma melhor posição no ranking!
+                </label>
+                <md-progress-linear class="md-primary " md-mode="determinate " value="{{progress}}"></md-progress-linear>
+                <label layout-margin><b>Questão {{getQuestion()}}/20</b></label>
+                <div layout="row ">
+                    <img src="{{question()}} " flex="50 ">
+                    <md-list layout="column " flex="20 " flex-offset="5 ">
+                        <h3>Resposta: </h3>
+                        <md-button class="md-accent md-hue-3 " flex ng-repeat="item in items " ng-click="processAnswer($index) ">
+                            <h3>Letra {{item}}</h3>
+                        </md-button>
+                    </md-list>
+                </div>
+                <div flex="100" style="background-color:{{getBgColor()}}" ng-show="showMessage()" layout="row" layout-align="center center">
+                    <span class="text-light"><b>{{getMessage()}}</b></span>
+                </div>
+            </md-card>
             <div ng-if="!checkSet1()" layout="row" layout-align="center center" class="md-primary md-raised">
                 <md-card layout="column" layout-align="center left" class="md-primary" layout-padding>
                     <h3>Etapa finalizada!</h3>
-                    <md-button ng-click="showPosttest()" flex="50">Continuar</md-button>
+                    <md-button ng-click="showPosttest()" flex="50" class="md-primary md-raised">Continuar</md-button>
                 </md-card>
             </div>
         </div>
-        <div layout="column " layout-align="center center " layout-margin layout-padding flex="20" ng-show="checkBadge(0) || checkBadge(1) || checkBadge(2)">
-            <h3>Meus Trofeus</h3>
-            <div layout=" column " flex="60 " layout-align="center center ">
-                <img ng-src="{{getBadge( 'badge5')}}" width="100px" ng-show="checkBadge(0)">
-                <img ng-src="{{getBadge( 'badge10')}} " width="100px" ng-show="checkBadge(1)">
-                <img ng-src="{{getBadge( 'badge')}}" width="100px" ng-show="checkBadge(2)">
-            </div>
+        <md-card layout="column" layout-margin layout-padding layout-align="left center" flex="20">
+            <div>
+                <h3>Meus Trofeus</h3>
+                <div>
+                    <div layout="column">
+                        <div layout="row" layout-align="center center" layout-margin>
+                            <img ng-src="{{getBadge('badge5')}}" flex="50">
+
+                        </div>
+                        <div layout="row" layout-align="center center" layout-margin>
+                            <img ng-src="{{getBadge('badge10')}} " flex="50">
+                        </div>
+                        <div layout="row" layout-align="center center" layout-margin>
+                            <img ng-src="{{getBadge('badge')}}" flex="50">
+                        </div>
+                    </div>
+        </md-card>
         </div>
-    </div>
-    <!-- <md-card layout="column " layout-align="center center " flex="25 " ng-show="{{checkBadge(0) || checkBadge(1) || checkBadge(2)}} "> -->
-</div>
-</div>
+        </div>

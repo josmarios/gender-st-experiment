@@ -14,16 +14,12 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     var inc = false;
     var dec = false;
 
-    $scope.badges = [];
-    $scope.items = ['A', 'B', 'C', 'D', 'E'];
-    $scope.progress = 0;
+    var bgColor = "white";
 
-    $scope.number = 6;
+    var currentMessage = "Correto!"
+    var flagMessage = false;
 
-    $scope.increment = false;
-    $scope.decrement = false;
-
-    $scope.users = [{
+    var users = [{
         name: "Alan",
         points: 79,
         avatar: "assets/" + configService.getTheme() + "/images/ranking1.png"
@@ -45,9 +41,49 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         avatar: userAvatar
     }];
 
+    $scope.badges = [];
+    $scope.items = ['A', 'B', 'C', 'D', 'E'];
+    $scope.progress = 0;
+
+    $scope.number = 6;
+
+    $scope.increment = false;
+    $scope.decrement = false;
+
+    $scope.showAvatar = true;
+
+    $scope.showQuestions = false;
+
+    $scope.getUserColor = function(name) {
+        if (name == "Alex")
+            return "#e0e0e0";
+        return "white";
+    };
+    $scope.getBgColor = function() {
+        return bgColor;
+    };
+
+    $scope.hideAvatar = function() {
+        $scope.showAvatar = false;
+        $scope.showQuestions = true;
+        updatePoints(10);
+    };
+
+    $scope.getUsers = function() {
+        return users;
+    };
+
+    $scope.getImage = function(value) {
+        return "assets/" + configService.getTheme() + "/images/avatar" + value + ".png";
+    };
+
+    $scope.setAvatar = function(value) {
+        userAvatar = value;
+        users[4].avatar = value;
+    };
+
     $scope.getNumber = function(num) {
         var array = new Array(num);
-        console.log(num);
         for (var i = 0; i < num; i++) {
             array.push(i);
         };
@@ -62,6 +98,11 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
     $scope.checkSet1 = function() {
         return showSet1;
+    };
+
+
+    $scope.checkAvatar = function() {
+        return !$scope.showAvatar;
     };
 
     $scope.setSet1 = function(value) {
@@ -86,18 +127,40 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     };
 
     $scope.getRanking = function(value) {
-        // var source = "assets/" + configService.getTheme() + "/images/ranking" + (value + 1) + ".png";
-        return $scope.users[value].avatar;
+        return users[value].avatar;
 
     };
 
-    $scope.checkBadge = function(id) {
-        var result = configService.getBadges()[id];
-        return result;
+    var checkBadge = function(index) {
+
+        return configService.getBadges()[index];
     };
 
-    $scope.getBadge = function(id) {
-        return "assets/" + configService.getTheme() + "/images/" + id + ".png";
+
+    $scope.getBadge = function(name) {
+
+        var id = 0;
+
+        switch (name) {
+            case "bage5":
+                id = 0;
+                break;
+            case "badge10":
+                id = 1;
+                break;
+            case "badge":
+                id = 2;
+                break;
+            default:
+                console.log("invalid badge name");
+        }
+
+
+        var flag = checkBadge(id) ? name : "noBadge";
+
+        //  console.log("flag: " + flag + " check: " + checkBadge(id));
+
+        return "assets/" + configService.getTheme() + "/images/" + flag + ".png";
     };
 
     $scope.getAvatar = function() {
@@ -109,20 +172,13 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     };
 
     $scope.chooseAvatar = function() {
-        $mdDialog.show({
-            controller: 'AvatarCtrl',
-            templateUrl: 'views/avatar.html',
-            parent: angular.element(document.body),
-            clickOutsideToClose: true,
-            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-        });
+        $scope.showAvatar = false;
     };
 
     $scope.getPoints = function() {
 
         return totalPoints;
     };
-
 
     $scope.question = function() {
         return "assets/" + configService.getTheme() + "/images/q-0.png";
@@ -144,18 +200,48 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     };
 
     $scope.getUserName = function(index) {
-        return $scope.users[index].name;
+        return users[index].name;
     };
 
     $scope.getUserPoints = function(index) {
-        
-        return $scope.users[index].points;
+
+        return users[index].points;
+    };
+
+    var setMsgType = function(type) {
+
+        if (type == "red") {
+            currentMessage = "Resposta Errada!"
+        } else {
+            currentMessage = "Resposta Certa!"
+        };
+    };
+
+    var playAnimation = function(type) {
+
+        console.log("playing animation: " + type);
+
+
+        bgColor = type;
+        flagMessage = true;
+
+        setMsgType(type);
+
+        setTimeout(function() {
+            $scope.$apply(function() {
+                bgColor = "white";
+                flagMessage = false;
+            });
+        }, 2000);
+
+
+
     };
 
     var updatePoints = function(value) {
 
         if (value < 0 && (totalPoints + value) >= 0) {
-
+            totalPoints += value;
             // dec = true;
             decrement = true;
             new Audio('assets/default/audio/wrong.mp3').play();
@@ -163,28 +249,59 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
         if (value > 0) {
             console.log("right answer");
+            totalPoints += value;
             level++;
-            // inc = true;
             increment = true;
             new Audio('assets/default/audio/right.mp3').play();
         };
 
-        totalPoints += value;
-
         //updates ranking
-        var sortedList = $scope.users.slice(0);
+        users = [{
+            name: "Alan",
+            points: 79,
+            avatar: "assets/" + configService.getTheme() + "/images/ranking1.png"
+        }, {
+            name: "Valentine",
+            points: 75,
+            avatar: "assets/" + configService.getTheme() + "/images/ranking2.png"
+        }, {
+            name: "Francis",
+            points: 63,
+            avatar: "assets/" + configService.getTheme() + "/images/ranking3.png"
+        }, {
+            name: "Danni",
+            points: 27,
+            avatar: "assets/" + configService.getTheme() + "/images/ranking4.png"
+        }, {
+            name: "Alex",
+            points: totalPoints,
+            avatar: userAvatar
+        }];
+
+        var sortedList = users.slice(0);
         sortedList.sort(function(a, b) {
             return a.points - b.points;
         });
 
-        $scope.users = sortedList.reverse();
+        console.log("before reverse: " + JSON.stringify(users));
+        users = sortedList.reverse();
+        console.log("After reverse: " + JSON.stringify(users));
 
         setTimeout(function() {
-            decrement = false;
-            increment = false;
+            $scope.decrement = false;
+            $scope.increment = false;
         }, 1000);
 
+
     };
+
+    $scope.getMessage = function() {
+        return currentMessage;
+    };
+
+    $scope.showMessage = function() {
+        return flagMessage;
+    }
 
     $scope.processAnswer = function(value) {
         setCurrent(value);
@@ -194,6 +311,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         if (userAnswer == answers[currentQuestion]) {
 
             updatePoints(5);
+            playAnimation("green");
 
             //badge level 5
             if (totalPoints == 25) {
@@ -248,6 +366,8 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
 
         } else if (currentQuestion == 19) {
+
+            playAnimation("red");
             $mdDialog.show({
                 controller: 'BadgeCtrl',
                 templateUrl: 'views/badge.html',
@@ -256,16 +376,17 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
             });
 
+            configService.addBadge(2);
+
             showSet1 = false;
             setTimeout(function() {
                 $mdDialog.hide();
             }, 1500);
         } else {
-
+            playAnimation("red");
             updatePoints(-5)
 
         };
-
 
         currentQuestion++;
         $scope.progress = 100 * (currentQuestion + 1) / 20;
@@ -274,11 +395,15 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         };
 
         if (currentQuestion >= 20) {
+            configService.addBadge(2);
+
             //  configService.setNext(true);
             User.setActivityPoints(totalPoints);
             console.log(User.getResponse());
             //  $location.path("/home");
             showSet1 = false;
+
+            $scope.showQuestions = false;
         };
 
     };
