@@ -344,7 +344,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 setTimeout(function() {
                     $mdDialog.hide();
-                }, 2000);
+                }, 2500);
 
 
             } else if (currentQuestion == 19) {
@@ -360,7 +360,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 setTimeout(function() {
                     $mdDialog.hide();
-                }, 2000);
+                }, 2500);
             };
 
 
@@ -381,7 +381,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
             showSet1 = false;
             setTimeout(function() {
                 $mdDialog.hide();
-            }, 1500);
+            }, 2500);
         } else {
             playAnimation("red");
             updatePoints(-5)

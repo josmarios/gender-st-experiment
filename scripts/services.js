@@ -6,7 +6,7 @@ tutorServices.service("configService", function() {
 
     var random = Math.floor((Math.random() * 10000)) % 3;
     // var currentTheme = opts[random];
-    var currentTheme = "stFemale";
+    var currentTheme = "stMale";
 
     var next = false;
 
