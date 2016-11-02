@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
 
-<head lang="en">
+<head lang="pt_BR">
     <meta charset="UTF-8">
-    <meta property="og:url" content="http://ansiedade.tk" />
-    <meta property="og:image" content="http://162.243.222.205:8080/front/assets/default/images/logo.png" />
+    <meta property="og:url" content="http://ansiedade.tk/" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="Estudo sobre Ansiedade" />
     <meta property="og:description" content="Estudo sobre ansiedade em ambientes educacionais gamificados." />
-    <title>Estudo sobre Ansiedade</title>
+    <meta property="og:image" content="http://162.243.222.205:8080/front/assets/default/images/logo.png" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="libs/node_modules/angular-material/angular-material.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <title>Estudo sobre Ansiedade</title>
 </head>
 
 <body ng-app="tutor" ng-controller="IndexCtrl" class="bg">
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8&appId=259201801144935";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div ng-view>
     </div>
     <script src="libs/node_modules/angular/angular.js"></script>
