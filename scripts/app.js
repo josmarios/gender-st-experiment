@@ -27,7 +27,7 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
 
     // Neutral Theme
     $mdThemingProvider.theme("default")
-        .primaryPalette("grey")
+        .primaryPalette("blue-grey")
         .accentPalette("blue-grey")
         .warnPalette("blue-grey");
 

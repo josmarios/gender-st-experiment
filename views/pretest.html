@@ -1,7 +1,7 @@
 <div>
     <div layout="row" layout-align="center center">
         <md-card layout="column" layout-align="center center" flex="50">
-            <md-toolbar layout="row" layout-align="center center" layout-padding class="md-primary md-hue-3">
+            <md-toolbar layout="row" layout-align="center center" layout-padding class="md-primary md-hue-2">
                 <div layout="column" flex="15">
                     <img src="assets/default/images/ufal.png">
                 </div>
@@ -24,7 +24,7 @@
                 <p>O participante deste estudo não será remunerado em hipótese alguma. Além disso, a participação no mesmo não implica em nenhum gasto para os participantes. No entanto, não nos responsabilizamos por quaisquer problemas técnicos que possam vir a ocorrer durante a execução desta pesquisa.</p>
                 <p> Sua participação nesta pesquisa consistirá em executar três atividades. Primeiro, será aplicado um questionário de ansiedade. Em seguida, você será direcionado(a) para uma outra página com o protótipo de um sistema tutor onde você responderá a perguntas básicas de raciocínio. Finalmente, você será direcionado(a) para a última página onde, novamente, responderá ao questionário de ansiedade. </p>
                 <p>Durante a execução, somente suas respostas serão coletadas. Todo o processo tem duração média de aproximadamente 15 minutos. Os dados obtidos por meio desta pesquisa serão confidenciais e não serão divulgados em nível individual, visando assegurar o sigilo de sua participação. O pesquisador responsável se comprometeu a tornar públicos nos meios acadêmicos e científicos os resultados obtidos de forma consolidada sem qualquer identificação de indivíduos participantes. </p>
-                <p>A qualquer momento você poderá contactar o estudante responsável através do endereço eletrônico jas@ic.ufal.br, onde você poderá tirar suas dúvidas sobre o projeto e sobre sua participação nele.</p>
+                <p>A qualquer momento você poderá contactar o estudante responsável através do endereço eletrônico <a href="mailto:jas@ic.ufal.br?Subject=Estudo%20sobre%20Ansiedade" target="_top">jas@ic.ufal.br</a>, onde você poderá tirar suas dúvidas sobre o projeto e sobre sua participação nele.</p>
                 <p> Caso você concorde em participar desta pesquisa, basta marcar o campo abaixo para prosseguir.</p>
                 <md-checkbox ng-click="start=true"><b>Declaro que entendi os objetivos, riscos e benefícios de minha participação na pesquisa, e que concordo em participar.</b></md-checkbox>
             </md-card-content>
@@ -32,8 +32,9 @@
     </div>
     <div layout="row" layout-align="center center" ng-show="start" class="bg">
         <md-card layout="column" layout-align="center center" flex="50">
-            <md-card-title>
-                <h2>Questionário Inicial</h2>
+            <md-card-title layout="column">
+                <h2>Etapa I - Questionário Inicial</h2>
+                <p>Responda as questões abaixo marcando as alternativas que mais se aproximam do estado em que você se encontra.</p>
             </md-card-title>
             <md-card-content>
                 <form>
