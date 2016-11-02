@@ -3,6 +3,7 @@ angular.module('tutor').controller("PretestCtrl", function($scope, $window, $loc
     var themes = ["default", "stFemale", "stMale"];
 
     var random = Math.floor((Math.random() * 10000)) % 3;
+
     $scope.questions = ["Sinto-me Calmo", "Sinto-me Seguro", "Estou tenso", "Estou arrependido", "Sinto-me à vontade", "Sinto-me perturbado", "Estou preocupado com possíveis infortúnios", "Sinto-me descansado", "Sinto-me ansioso", "Sinto-me 'em casa'", "Sinto-me confiante", "Sinto-me nervoso", "Sinto-me agitado", "Sinto-me em uma pilha de nervos", "Estou descontraído", "Sinto-me satisfeito", "Estou preocupado", "Sinto-me confuso", "Sinto-me alegre", "Sinto-me bem"];
     $scope.answers = [];
 
@@ -18,16 +19,15 @@ angular.module('tutor').controller("PretestCtrl", function($scope, $window, $loc
 
             var sum = $scope.answers.reduce(add, 0);
 
-            // configService.setTheme(themes[random]);
-            configService.setTheme("stFemale");
+            configService.setTheme(themes[random]);
             User.setGender($scope.gender);
             User.setAge($scope.age);
-            //  User.setTestType(themes[random]);
-            User.setTestType("stFemale");
+            User.setTestType(themes[random]);
+
             User.setPretestPoints(sum);
 
             console.log(User.getResponse());
-            User.save();
+            // User.save();
             $location.path("/home");
 
         };

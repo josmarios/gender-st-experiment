@@ -23,7 +23,7 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
 
 }).config(function($mdThemingProvider) {
 
-// $mdThemingProvider.alwaysWatchTheme(true);
+ $mdThemingProvider.alwaysWatchTheme(true);
 
     // Neutral Theme
     $mdThemingProvider.theme("default")
