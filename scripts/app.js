@@ -1,12 +1,3 @@
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8&appId=259201801144935";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
 angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tutor.services"]).config(function($routeProvider) {
 
     $routeProvider.
@@ -32,7 +23,7 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
 
 }).config(function($mdThemingProvider) {
 
-    $mdThemingProvider.alwaysWatchTheme(true);
+// $mdThemingProvider.alwaysWatchTheme(true);
 
     // Neutral Theme
     $mdThemingProvider.theme("default")
@@ -40,15 +31,16 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
         .accentPalette("blue-grey")
         .warnPalette("blue-grey");
 
+    // ST-F 
+    $mdThemingProvider.theme("stFemale")
+        .primaryPalette("purple")
+        .accentPalette("purple")
+        .warnPalette("purple");
+
     // ST-M 
     $mdThemingProvider.theme("stMale")
         .primaryPalette("blue")
         .accentPalette("blue")
         .warnPalette("blue");
 
-    // ST-F 
-    $mdThemingProvider.theme("stFemale")
-        .primaryPalette("purple")
-        .accentPalette("purple")
-        .warnPalette("purple")
 });

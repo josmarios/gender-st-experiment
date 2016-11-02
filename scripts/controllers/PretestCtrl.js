@@ -9,29 +9,28 @@ angular.module('tutor').controller("PretestCtrl", function($scope, $window, $loc
     $scope.processAnswers = function() {
 
         //  validation
-        //  if ($scope.answers.length < 20) {
-        $scope.msg = "Por favor, responda todas as perguntas!"
-            // } else {
-        function add(a, b) {
-            return parseInt(a) + parseInt(b);
-        }
+        if ($scope.answers.length < 20) {
+            $scope.msg = "Por favor, responda todas as perguntas!"
+        } else {
+            function add(a, b) {
+                return parseInt(a) + parseInt(b);
+            }
 
-        var sum = $scope.answers.reduce(add, 0);
+            var sum = $scope.answers.reduce(add, 0);
 
-        // configService.setTheme(themes[random]);
-        configService.setTheme("stFemale");
-        User.setGender($scope.gender);
-        User.setAge($scope.age);
-        //  User.setTestType(themes[random]);
-        User.setTestType("stFemale");
-        User.setPretestPoints(sum);
+            // configService.setTheme(themes[random]);
+            configService.setTheme("stFemale");
+            User.setGender($scope.gender);
+            User.setAge($scope.age);
+            //  User.setTestType(themes[random]);
+            User.setTestType("stFemale");
+            User.setPretestPoints(sum);
 
-        console.log(User.getResponse());
-        User.save();
-        $location.path("/home");
+            console.log(User.getResponse());
+            User.save();
+            $location.path("/home");
 
-
-        //  };
+        };
 
     };
 });

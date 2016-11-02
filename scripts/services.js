@@ -2,9 +2,9 @@ var tutorServices = angular.module("tutor.services", []);
 
 tutorServices.service("configService", function() {
 
-    var opts = ["default", "stFemale", "stMale"];
+    var opts = ["default", "stMale", "stFemale"];
 
-    var random = Math.floor((Math.random() * 10000)) % 3;
+    var random = Math.floor((Math.random() * 123457)) % 3;
     var currentTheme = opts[random];
     // var currentTheme = "default";
 
@@ -36,7 +36,6 @@ tutorServices.service("configService", function() {
     this.getBadges = function() {
         return badgeFlags;
     };
-
 
 });
 
@@ -92,7 +91,7 @@ tutorServices.service("User", function($http) {
 
         }, function(response) {
             // failed
-            console.error("Failed on submitting answer.");
+            console.error("Failed on submitting answer. "+ response);
         });
     };
 
