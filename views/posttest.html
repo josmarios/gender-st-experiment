@@ -1,37 +1,46 @@
 <div>
     <div layout="row" layout-align="center center">
         <md-card layout="column" layout-align="center center" flex="50">
-            <md-toolbar layout="row" layout-align="center center" layout-padding>
-                <h1>Questionário Final</h1>
+            <md-toolbar layout="row" layout-align="center center" layout-padding class="md-primary md-hue-3">
+         
+                <div layout="row" layout-align="center left">
+                    <span>Etapa III</span>
+                </div>
+          
             </md-toolbar>
-            <md-content layout="column" layout-align="center center">
-                <md-card-content>
-                    <form>
-                        <div ng-repeat="q in questions">
-                            <h3>{{q}}</h3>
-                            <div layout="row">
-                                <p>Absolutamente Não </p>
-                                <md-radio-group ng-model="answers[$index]" layout="row">
-                                    <label>1</label>
-                                    <md-radio-button value="1" aria-label="option 1"></md-radio-button>
-                                    <label>2</label>
-                                    <md-radio-button value="2" aria-label="option 2"></md-radio-button>
-                                    <label>3</label>
-                                    <md-radio-button value="3" aria-label="option 3"></md-radio-button>
-                                    <label>4</label>
-                                    <md-radio-button value="4" aria-label="option 4"></md-radio-button>
-                                </md-radio-group>
-                                <p>Muitíssimo</p>
-                            </div>
-                            </p>
-                            </p>
-                            <md-divider></md-divider>
+        </md-card>
+    </div>
+    <div layout="row" layout-align="center center" class="bg">
+        <md-card layout="column" layout-align="center center" flex="50">
+            <md-card-title>
+                <h2>Questionário Final</h2>
+            </md-card-title>
+            <md-card-content>
+                <form>
+                    <div ng-repeat="q in questions">
+                        <h3>{{q}}</h3>
+                        <div layout="row">
+                            <p>Absolutamente Não </p>
+                            <md-radio-group ng-model="answers[$index]" layout="row" class="md-primary">
+                                <label>1</label>
+                                <md-radio-button value="1" aria-label="option 1"></md-radio-button>
+                                <label>2</label>
+                                <md-radio-button value="2" aria-label="option 2"></md-radio-button>
+                                <label>3</label>
+                                <md-radio-button value="3" aria-label="option 3"></md-radio-button>
+                                <label>4</label>
+                                <md-radio-button value="4" aria-label="option 4"></md-radio-button>
+                            </md-radio-group>
+                            <p>Muitíssimo</p>
                         </div>
-                        <md-button ng-click="processAnswers()" type="submit" class="md-raised md-primary">Finalizar!</md-button>
-                        <span>{{msg}}</span>
-                    </form>
-                </md-card-content>
-            </md-content>
+                        </p>
+                        </p>
+                        <md-divider></md-divider>
+                    </div>
+                    <md-button ng-click="processAnswers()" type="submit" class="md-raised md-primary">Finalizar!</md-button>
+                    <span>{{msg}}</span>
+                </form>
+            </md-card-content>
         </md-card>
     </div>
 </div>

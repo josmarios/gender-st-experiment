@@ -1,7 +1,7 @@
 <div>
     <div layout="row" layout-align="center center">
         <md-card layout="column" layout-align="center center" flex="50">
-            <md-toolbar layout="row" layout-align="center center" layout-padding>
+            <md-toolbar layout="row" layout-align="center center" layout-padding class="md-primary md-hue-3">
                 <div layout="column" flex="15">
                     <img src="assets/default/images/ufal.png">
                 </div>
@@ -12,7 +12,9 @@
                     <img src="assets/default/images/ic.png">
                 </div>
             </md-toolbar>
+            <md-divider>
             <md-card-content layout-padding layout-margin ng-show="!start">
+
                 <label><b>Termo de Consentimento Livre e Esclarecido</b></label>
                 <br>
                 <p> Você está sendo convidado(a) a participar, como voluntário(a), de um estudo sobre ansiedade em ambientes educacionais gamificados, conduzido pelo estudante Josmário Albuquerque do curso de graduação em Ciência da Computação do Instituto de Computação da Universidade Federal de Alagoas. </p>
@@ -57,7 +59,7 @@
                         <h3>{{q}}</h3>
                         <div layout="row">
                             <p>Absolutamente Não </p>
-                            <md-radio-group ng-model="answers[$index]" layout="row">
+                            <md-radio-group ng-model="answers[$index]" layout="row" class="md-primary">
                                 <label>1</label>
                                 <md-radio-button value="1" aria-label="option 1"></md-radio-button>
                                 <label>2</label>
