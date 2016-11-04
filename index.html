@@ -8,24 +8,88 @@
     <meta property="fb:app_id" content="259201801144935" />
     <meta property="og:url" content="http://ansiedade.tk/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Estudo sobre Ansiedade" />
-    <meta property="og:description" content="Estudo sobre ansiedade em ambientes educacionais gamificados." />
-    <meta property="og:image" content="http://162.243.222.205:8080/front/assets/default/images/logo.png" />
+
     <link rel="stylesheet" href="libs/node_modules/angular-material/angular-material.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 
 <body ng-app="tutor" ng-controller="IndexCtrl" class="bg">
-    <div id="fb-root"></div>
-    <div ng-view>
+    <!--   <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '259201801144935',
+            xfbml: true,
+            version: 'v2.8'
+        });
+      //  FB.AppEvents.logPageView();
+    };
+
+    // FB.ui({
+    //     method: 'share',
+    //     href: 'https://developers.facebook.com/docs/',
+    // }, function(response) {});
+
+    // (function(d, s, id) {
+    //     var js, fjs = d.getElementsByTagName(s)[0];
+    //     if (d.getElementById(id)) {
+    //         return;
+    //     }
+    //     js = d.createElement(s);
+    //     js.id = "shareBtn";
+    //     js.src = "//connect.facebook.net/en_US/sdk.js";
+    //     fjs.parentNode.insertBefore(js, fjs);
+    // }(document, 'script', 'facebook-jssdk'));
+    </script> -->
+    <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '259201801144935',
+            xfbml: true,
+            version: 'v2.8'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div ng-view autoscroll="true">
     </div>
+
+
+     <!-- <div id="shareBtn">Compartilhar no facebook</div> -->
+
+     <!--  <div  id="shareBtn" class="btn fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore">Share</a></div>
+
+    -->
+   <!--  <script>
+    document.getElementById('shareBtn').onclick = function() {
+        FB.ui({
+            method: 'share',
+            display: 'popup',
+            href: 'http://ansiedade.tk/',
+            title: 'Estudo sobre Ansiedade',
+            description: 'Estudo sobre ansiedade em ambientes educacionais gamificados',
+            picture: 'http://portaldobem.net/wp-content/uploads/2015/10/ansiedade.jpg',
+            layout: 'button'
+        }, function(response) {});
+    }
+    </script> -->
     <script src="libs/node_modules/angular/angular.js"></script>
     <script src="libs/node_modules/angular-route.min.js"></script>
     <script src="libs/node_modules/angular-resource.min.js"></script>
     <script src="libs/node_modules/angular-material/angular-material.js"></script>
     <script src="libs/node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="libs/node_modules/angular-aria/angular-aria.js"></script>
+    <script src="libs/facebook/facebook.js"></script>
     <script src="scripts/services.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/IndexCtrl.js"></script>
