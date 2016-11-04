@@ -7,7 +7,7 @@ angular.module('tutor').controller("FinishCtrl", function($scope, User) {
         FB.ui({
             method: 'share',
             display: 'popup',
-            href: 'ansiedade.tk',
+            href: 'http://ansiedade.tk/',
             title: 'Está Ansioso(a)?',
             description: 'Participe deste estudo sobre ansiedade e descubra!',
             picture: 'https://pixabay.com/static/uploads/photo/2016/02/07/14/51/hatena-1184896_960_720.png',

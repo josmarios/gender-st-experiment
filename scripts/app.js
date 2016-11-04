@@ -61,6 +61,6 @@ window.fbAsyncInit = function() {
     }
     js = d.createElement(s);
     js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
+    js.src = "libs/facebook/facebook.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
