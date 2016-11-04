@@ -1,4 +1,4 @@
-angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tutor.services"]).config(function($routeProvider) {
+angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "ngCanvasGauge","tutor.services"]).config(function($routeProvider) {
 
     $routeProvider.
     when("/pretest", {
@@ -23,7 +23,7 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
 
 }).config(function($mdThemingProvider) {
 
- $mdThemingProvider.alwaysWatchTheme(true);
+    $mdThemingProvider.alwaysWatchTheme(true);
 
     // Neutral Theme
     $mdThemingProvider.theme("default")
@@ -44,3 +44,23 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "tu
         .warnPalette("blue");
 
 });
+
+//GLOBAL - FACEBOOK API
+window.fbAsyncInit = function() {
+    FB.init({
+        appId: '259201801144935',
+        xfbml: true,
+        version: 'v2.8'
+    });
+};
+
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));

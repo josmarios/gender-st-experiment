@@ -78,6 +78,10 @@ tutorServices.service("User", function($http) {
         return response;
     };
 
+    this.getAnxiety = function() {
+        return response.pretestPoints;
+    };
+
     this.save = function() {
         $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
@@ -91,7 +95,7 @@ tutorServices.service("User", function($http) {
 
         }, function(response) {
             // failed
-            console.error("Failed on submitting answer. "+ response);
+            console.error("Failed on submitting answer. " + response);
         });
     };
 
