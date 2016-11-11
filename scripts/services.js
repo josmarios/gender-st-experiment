@@ -41,8 +41,8 @@ tutorServices.service("configService", function() {
 
 tutorServices.service("User", function($http) {
     var resp = {
-        startTime: "",
-        endTime: "",
+        startTime: 0,
+        endTime: 0,
         gender: "",
         age: "",
         testType: "",
