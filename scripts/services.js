@@ -40,46 +40,66 @@ tutorServices.service("configService", function() {
 });
 
 tutorServices.service("User", function($http) {
-    var response = {
+    var resp = {
+        startTime: "",
+        endTime: "",
         gender: "",
         age: "",
         testType: "",
         pretestPoints: 0,
         activityPoints: 0,
         posttestPoints: 0,
+        pre: [],
+        post: []
     };
 
     this.setGender = function(value) {
-        response.gender = value;
+        resp.gender = value;
         console.log("setting gender: " + value);
     };
 
     this.setAge = function(value) {
-        response.age = value;
+        resp.age = value;
     };
 
     this.setTestType = function(value) {
-        response.testType = value;
+        resp.testType = value;
     };
 
     this.setPretestPoints = function(value) {
-        response.pretestPoints = value;
+        resp.pretestPoints = value;
     };
 
     this.setPosttestPoints = function(value) {
-        response.posttestPoints = value;
+        resp.posttestPoints = value;
     };
 
     this.setActivityPoints = function(value) {
-        response.activityPoints = value;
+        resp.activityPoints = value;
     };
 
     this.getResponse = function() {
-        return response;
+        return resp;
     };
 
     this.getAnxiety = function() {
-        return response.pretestPoints;
+        return resp.pretestPoints;
+    };
+
+    this.setPre = function(value) {
+        resp.pre = value;
+    };
+
+    this.setPost = function(value) {
+        resp.post = value;
+    };
+
+    this.setStartTime = function(value) {
+        resp.startTime = value;
+    };
+
+    this.setEndTime = function(value) {
+        resp.endTime = value;
     };
 
     this.save = function() {
@@ -88,10 +108,10 @@ tutorServices.service("User", function($http) {
         $http({
             url: "http://162.243.222.205:8282/back/CapstoneServlet",
             method: "POST",
-            data: JSON.stringify(response)
+            data: JSON.stringify(resp)
         }).then(function(response) {
             // success
-            console.log("Response sent!");
+            console.log("response sent!");
 
         }, function(response) {
             // failed
