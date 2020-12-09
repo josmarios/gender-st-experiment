@@ -2,7 +2,7 @@
 ## Gender stereotypes, student anxiety, and gamification
 
 
-This repository contains the frontend code for the experiment described in the article, "[Does gender stereotype threat in gamified educational environments cause anxiety? An experimental study](https://www.sciencedirect.com/science/article/abs/pii/S0360131517301914)."
+This repository contains the code for the experiment described in the article, "[Does gender stereotype threat in gamified educational environments cause anxiety? An experimental study](https://www.sciencedirect.com/science/article/abs/pii/S0360131517301914)."
 
 ### How to cite
 * Albuquerque, J., Bittencourt, I. I., Coelho, J. A., & Silva, A. P. (2017). Does gender stereotype threat in gamified educational environments cause anxiety? An experimental study. Computers & Education, 115, 161-170.
@@ -23,7 +23,7 @@ This repository contains the frontend code for the experiment described in the a
 ```
 
 ## Overview
-This project comprises an experimental environment to study the impact of gender stereotype threat in student anxiety. In summary, the application has the following workflow:
+This project comprises an experimental environment to study the impact of gender stereotype threat on student anxiety. In summary, the application has the following workflow:
 1. Consent form
 2. Pre-test (anxiety assessment)
 3. Gamified activity. There are three different design flavours for this activity: male-stereotyped, female-stereotyped, and neutral. Upon finishing the pre-test, one of the three flavours is randomly selected for the current participant. Please note the activity content does not change across versions (only UI elements like colours and images).
@@ -37,14 +37,14 @@ In order to setup this project for a real use in your research, you will need to
 ### Step 1: Adapting the project for your needs
 
 * In general, most textual content can be changed by editing the '*.html' files located in:
- * `webapp/views/`
+	* `webapp/views/`
 * To change the anxiety questions, refer to:
- * `webapp/scripts/controllers/PretestCtrl.js`
- * `webapp/scripts/controllers/PosttestCtrl.js`
+	* `webapp/scripts/controllers/PretestCtrl.js`
+	* `webapp/scripts/controllers/PosttestCtrl.js`
 * For server configurations, refer to:
- * `Server.js`
+	* `Server.js`
 * To change the endpoint URL to where the responses are submitted, refer to:
- * `webapp/scripts/services.js`
+	* `webapp/scripts/services.js`
 
 
 ### Step 2: Running the project
